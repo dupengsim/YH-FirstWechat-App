@@ -10,7 +10,7 @@
 	"compileType": "miniprogram",
 	"libVersion": "1.9.91",
 	"appid": "wx762686d8a94ae1e5",
-	"projectname": "YH-FirstWechat",
+	"projectname": "first_wechat",
 	"isGameTourist": false,
 	"condition": {
 		"search": {
