@@ -1,12 +1,39 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/logs/logs"
+    "pages/public/public",
+    "pages/share/share"
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#fff",
-    "navigationBarTitleText": "WeChat",
-    "navigationBarTextStyle":"black"
+    "navigationBarBackgroundColor": "#355A83",
+    "navigationBarTitleText": "说话的地方",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "color": "#2c2c2c",
+    "selectedColor": "#355A83",
+    "backgroundColor": "#fff",
+    "borderStyle": "1px solid #e6e6e6",
+    "list": [
+      {
+        "pagePath": "pages/public/public",
+        "iconPath": "images/icon/public.png",
+        "selectedIconPath": "images/icon/public.png",
+        "text": "终结春节尬聊"
+      },
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home.png",
+        "text": "我要创作"
+      },
+      {
+        "pagePath": "pages/share/share",
+        "iconPath": "images/icon/share.png",
+        "selectedIconPath": "images/icon/share.png",
+        "text": "邀请好友参加"
+      }
+    ]
   }
 }
