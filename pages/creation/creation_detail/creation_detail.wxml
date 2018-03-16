@@ -1,0 +1,11 @@
+<view>
+  <text class='txt'>还可以输入{{limitNoteLen}}个字</text>
+  <view class='card_container'>
+    <image src='{{cardImgs[postId]}}'></image>
+  </view>
+  <textarea class='inputTxt' placeholder='请输入文字……' placeholder-class="input-placeholder" maxlength='{{noteMaxLen}}' bindinput='bindWordimit'></textarea>
+  <view class='createBtn'>
+    <text class='iconfont icon-fenxiang'></text>
+    <text>生成海报</text>
+  </view>
+</view>

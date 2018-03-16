@@ -1,13 +1,20 @@
 <!--index.wxml-->
-<view class="container">
-  <view class="userinfo">
-    <button wx:if="{{!hasUserInfo && canIUse}}" open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 获取头像昵称 </button>
-    <block wx:else>
-      <image bindtap="bindViewTap" class="userinfo-avatar" src="{{userInfo.avatarUrl}}" background-size="cover"></image>
-      <text class="userinfo-nickname">{{userInfo.nickName}}</text>
+<view class='container'>
+  <view class='conversation_Btn' catchtap='onConversationTap'>
+    <text class='iconfont icon-yuzhouxingqiu-04'></text>
+    <text>来春节不沉默联盟？？戳此领专属福利</text>
+  </view>
+  <swiper bindchange='swiperChange' circular="true">
+    <block wx:for="{{imgUrls}}">
+      <swiper-item style="position:relative;">
+        <image src="{{item}}" class="slide-image" />
+        <!-- <text class='iconfont icon-fenxiang' style="color:black;font-size:30rpx;z-index:99;"></text> -->
+      </swiper-item>
     </block>
+  </swiper>
+  <view class='swipe-btn-wrapper'>
+    <text>{{index}}</text>/
+    <text>5</text>
   </view>
-  <view class="usermotto">
-    <text class="user-motto">{{motto}}</text>
-  </view>
+  <text class='iconfont icon-fenxiang' catchtap='onShareTap'></text>
 </view>

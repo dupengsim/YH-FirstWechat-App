@@ -2,7 +2,9 @@
   "pages":[
     "pages/index/index",
     "pages/public/public",
-    "pages/share/share"
+    "pages/share/share",
+    "pages/creation/creation",
+    "pages/creation/creation_detail/creation_detail"
   ],
   "window":{
     "backgroundTextStyle":"light",
@@ -17,13 +19,19 @@
     "borderStyle": "1px solid #e6e6e6",
     "list": [
       {
+        "pagePath": "pages/index/index",
+        "iconPath": "images/icon/home.png",
+        "selectedIconPath": "images/icon/home.png",
+        "text": "首页"
+      },
+      {
         "pagePath": "pages/public/public",
         "iconPath": "images/icon/public.png",
         "selectedIconPath": "images/icon/public.png",
         "text": "终结春节尬聊"
       },
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "pages/creation/creation",
         "iconPath": "images/icon/home.png",
         "selectedIconPath": "images/icon/home.png",
         "text": "我要创作"
