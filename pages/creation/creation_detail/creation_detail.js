@@ -6,7 +6,11 @@ Page({
   data: {
     noteMaxLen: "48",
     limitNoteLen: "48",
-    imgUrl: ''
+    imgUrl: '',
+    content: '',//输入的文字内容
+    isshow: 1,
+    clientWidth: 0,
+    clientHeight: 0
   },
   onLoad: function (options) {
     let that = this;
@@ -23,7 +27,7 @@ Page({
       }
     } else {
       that.setData({
-        imgUrl: app.globalData.chooseImgUrl
+        imgUrl: app.globalData.chooseImgUrl[0]
       });
     }
   },
@@ -36,7 +40,106 @@ Page({
     }
     this.setData({
       currentNoteLen: len,  //当前字数 
-      limitNoteLen: this.data.noteMaxLen - len
+      limitNoteLen: this.data.noteMaxLen - len,
+      content: value
+    })
+  },
+  textAreaBlur: function (evt) {
+    this.setData({
+      content: evt.detail.value
+    })
+  },
+  createPoster: function () { //生成海报
+    let that = this;
+    var _width = 0;
+    var _height = 0;
+    wx.getSystemInfo({
+      success: function (res) {
+        _width = res.windowWidth;
+        _height = res.windowHeight;
+        that.setData({
+          clientWidth: res.windowWidth,
+          clientHeight: res.windowHeight
+        })
+      },
+    })
+    var _imgUrl = that.data.imgUrl;
+    var _content = that.data.content;
+    var arr = _content.split(/[\n,]/g);
+    var context = wx.createCanvasContext('myCanvas');
+    context.stroke();
+    context.drawImage(_imgUrl, 0, 0, _width - 10, _height - 100);
+    //填充文字
+    context.setFillStyle('white');
+    context.font = "bold 24px Arial";
+    context.fillText('#在亲戚的眼里，你是干啥的#', 30, 40);
+    var _top = 65;
+    for (var i = 0; i < arr.length; i++) {
+      that.drawText(arr[i], 30, _top, 160, context);
+      _top += 20;
+    }
+    //绘制图片
+    context.draw();
+    //输出最终图片的路径
+    setTimeout(() => {
+      wx.canvasToTempFilePath({
+        canvasId: 'myCanvas',
+        success: function (res) {
+          var tempFilePath = res.tempFilePath;
+          console.log(tempFilePath);
+          that.setData({
+            imgUrl: tempFilePath
+          });
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      }, that)
+    }, 1000)
+
+    that.setData({
+      isshow: 0
+    });
+  },
+  drawText: function (t, x, y, w, context) { // 设置文本自动换行
+    var chr = t.split("");
+    var temp = "";
+    var row = [];
+    context.font = "bold 24px Arial";
+    context.fillStyle = "white";
+    context.textBaseline = "middle";
+    for (var a = 0; a < chr.length; a++) {
+      if (context.measureText(temp).width < w) {
+        ;
+      }
+      else {
+        row.push(temp);
+        temp = "";
+      }
+      temp += chr[a];
+    }
+    row.push(temp);
+    for (var b = 0; b < row.length; b++) {
+      context.fillText(row[b], x, y + (b + 1) * 20);
+    }
+  },
+  saveImage: function () { //保存海报到相册
+    let that = this;
+    console.log(that.data.imgUrl);
+    wx.saveImageToPhotosAlbum({
+      filePath: that.data.imgUrl,
+      success: function (res) {
+        wx.showToast({
+          title: '保存到相册成功',
+          icon: 'success',
+          duration: 1000
+        })
+      },
+      fail: function (res) {
+        wx.showToast({
+          title: '保存到相册失败',
+        })
+      }
     })
   }
 })

@@ -1,11 +1,17 @@
-<view>
+<view wx:if="{{isshow==1}}">
   <text class='txt'>还可以输入{{limitNoteLen}}个字</text>
   <view class='card_container'>
     <image src='{{imgUrl}}'></image>
   </view>
-  <textarea class='inputTxt' placeholder='请输入文字……' placeholder-class="input-placeholder" maxlength='{{noteMaxLen}}' bindinput='bindWordimit'></textarea>
-  <view class='createBtn'>
+  <textarea class='inputTxt' placeholder='请输入文字……' placeholder-class="input-placeholder" maxlength='{{noteMaxLen}}' bindinput='bindWordimit' bindblur='textAreaBlur'></textarea>
+  <view class='createBtn' catchtap='createPoster'>
     <text class='iconfont icon-fenxiang'></text>
     <text>生成海报</text>
   </view>
+</view>
+
+<canvas wx:if="{{isshow==0}}" canvas-id='myCanvas' class="canvas" style="width:{{clientWidth}}px;height:{{clientHeight}}px;"></canvas>
+<view wx:if="{{isshow==0}}">
+  <button catchtap='saveImage'>导出图片</button>
+  <button class='share' id="shareBtn" open-type="share">分享给好友</button>
 </view>
