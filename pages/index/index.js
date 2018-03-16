@@ -1,14 +1,16 @@
+var imglist = require('../../mock/mock-data.js');
+
+
 Page({
 
   data: {
-    imgUrls: [
-      '../../images/in_1.jpg',
-      '../../images/in_2.jpg',
-      '../../images/in_3.jpg',
-      '../../images/in_4.jpg',
-      '../../images/in_5.jpg'
-    ],
+    // imgUrls: [],
     index: 1
+  },
+  onLoad: function () {
+    this.setData({
+      imgUrls: imglist.imageList
+    })
   },
   swiperChange: function (event) {
     this.setData({
@@ -20,7 +22,7 @@ Page({
       url: '/pages/public/public',
     })
   },
-  onShareTap: function(event) {
+  onShareTap: function (event) {
     var itemList = [
       "分享给微信好友",
       "保存到本地相册"
@@ -28,10 +30,10 @@ Page({
     wx.showActionSheet({
       itemList: itemList,
       success(res) {
-        if(res.tapIndex === 1) {
+        if (res.tapIndex === 1) {
           wx.saveImageToPhotosAlbum({
             filePath: 'res.tempFilePath',
-            success: function(res) {
+            success: function (res) {
               console.log(res)
             }
           })

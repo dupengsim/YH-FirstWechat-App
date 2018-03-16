@@ -1,36 +1,30 @@
+var creationList = require('../../../mock/mock-data.js');
+
 Page({
 
   data: {
-    noteMaxLen:"48",
-    limitNoteLen:"48",
-    cardImgs: [
-      '../../../images/in_1.jpg',
-      '../../../images/in_2.jpg',
-      '../../../images/in_3.jpg',
-      '../../../images/in_4.jpg',
-      '../../../images/in_5.jpg',
-      '../../../images/in_1.jpg',
-      '../../../images/in_2.jpg',
-      '../../../images/in_1.jpg',
-      '../../../images/in_2.jpg',
-      '../../../images/in_3.jpg',
-      '../../../images/in_4.jpg',
-      '../../../images/in_5.jpg',
-      '../../../images/in_1.jpg',
-      '../../../images/in_2.jpg',
-    ]
+    noteMaxLen: "48",
+    limitNoteLen: "48",
+    imgUrl: ''
   },
-  onLoad: function(options) {
+  onLoad: function (options) {
+    let that = this;
     var postId = options.id;
-    this.setData({
-      postId: postId
-    })
+    var tempList = creationList.creationList;
+    for (var i = 0; i < tempList.length; i++) {
+      var item = tempList[i];
+      if (item.id == postId) {
+        that.setData({
+          imgUrl: item.url
+        });
+      }
+    }
   },
   //字数限制
   bindWordimit: function (event) {
     var value = event.detail.value;
     var len = parseInt(value.length);
-    if(len > this.data.noteMaxLen) {
+    if (len > this.data.noteMaxLen) {
       return;
     }
     this.setData({

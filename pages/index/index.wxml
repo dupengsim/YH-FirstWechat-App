@@ -7,8 +7,7 @@
   <swiper bindchange='swiperChange' circular="true">
     <block wx:for="{{imgUrls}}">
       <swiper-item style="position:relative;">
-        <image src="{{item}}" class="slide-image" />
-        <!-- <text class='iconfont icon-fenxiang' style="color:black;font-size:30rpx;z-index:99;"></text> -->
+        <image src="{{item.url}}" class="slide-image" />
       </swiper-item>
     </block>
   </swiper>
