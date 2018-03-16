@@ -1,4 +1,5 @@
 var creationList = require('../../../mock/mock-data.js');
+var app = getApp();
 
 Page({
 
@@ -10,14 +11,20 @@ Page({
   onLoad: function (options) {
     let that = this;
     var postId = options.id;
-    var tempList = creationList.creationList;
-    for (var i = 0; i < tempList.length; i++) {
-      var item = tempList[i];
-      if (item.id == postId) {
-        that.setData({
-          imgUrl: item.url
-        });
+    if (postId != undefined && postId != '' && postId.length > 0) {
+      var tempList = creationList.creationList;
+      for (var i = 0; i < tempList.length; i++) {
+        var item = tempList[i];
+        if (item.id == postId) {
+          that.setData({
+            imgUrl: item.url
+          });
+        }
       }
+    } else {
+      that.setData({
+        imgUrl: app.globalData.chooseImgUrl
+      });
     }
   },
   //字数限制
@@ -32,5 +39,4 @@ Page({
       limitNoteLen: this.data.noteMaxLen - len
     })
   }
-
 })

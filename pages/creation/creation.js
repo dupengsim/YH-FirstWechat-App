@@ -1,4 +1,5 @@
 var creationList = require('../../mock/mock-data.js');
+var app = getApp();
 
 Page({
 
@@ -15,23 +16,24 @@ Page({
   },
   onCreationTap: function (event) {
     var postId = event.currentTarget.dataset.index;
-    console.log(postId);
     wx.navigateTo({
       url: '/pages/creation/creation_detail/creation_detail?id=' + postId,
     })
   },
   //图片上传
   onImgUp: function (event) {
+    let that = this;
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
       sourceType: ['album'],
       success: function (res) {
-        var tempFilePaths = res.tempFilePaths
+        var tempFilePaths = res.tempFilePaths;
+        app.globalData.chooseImgUrl = tempFilePaths;
+        wx.navigateTo({
+          url: '/pages/creation/creation_detail/creation_detail',
+        })
       },
     })
-  },
-
-
-
+  }
 })
