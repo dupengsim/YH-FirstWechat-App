@@ -15,7 +15,31 @@
   <view class='swipe-btn-wrapper'>
     <text>{{index}}</text>/
     <text>5</text>
+<<<<<<< HEAD
   </view> 
   <text class='iconfont icon-fenxiang' catchtap='onShareBtnTap'></text>
+=======
+  </view>
+  <text class='iconfont icon-shangchuan' bindtap='show'></text>
+>>>>>>> 3ca7be5ff9a14481ac038fa3ff7fcf43cc62c59e
   <template is="navigation"></template>
+  <!-- 分享 -->
+  <view class='share_alpha_Box' hidden='{{isflag}}'>
+    <view class='shareBox'>
+      <view class='share_button'>
+        <view class='share_Friends share_item'>
+          <text class='iconfont icon-logo-wechat'></text>
+          <text class='share_txt'>分享给好友</text>
+        </view>
+        <view class='share_line'></view>
+        <view class='save_Photo share_item'>
+          <text class='iconfont icon-xiazai'></text>
+          <text class='share_txt'>保存到相册</text>
+        </view>
+      </view>
+      <view class='share_cancel'>
+        <text>取消</text>
+      </view>
+    </view>
+  </view>
 </view>

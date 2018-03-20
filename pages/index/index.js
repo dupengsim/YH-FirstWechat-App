@@ -4,8 +4,14 @@ import { onPublicTab, onCreationTab, onShareTab, onArraySort } from '../../commo
 Page({
 
   data: {
+<<<<<<< HEAD
     imgUrls: [],
     index: 1
+=======
+    // imgUrls: [],
+    index: 1,
+    isflag:true
+>>>>>>> 3ca7be5ff9a14481ac038fa3ff7fcf43cc62c59e
   },
   onLoad: function () {
     this.setData({
@@ -22,6 +28,7 @@ Page({
       url: '/pages/public/public',
     })
   },
+<<<<<<< HEAD
   onShareBtnTap: function (event) {
     let that = this;
     var itemList = [
@@ -55,6 +62,16 @@ Page({
           
         }
       }
+=======
+  Show: function (event) {
+    this.setData({
+      isflag:false
+    })
+  },
+  isShow: function(event){
+    this.setData({
+      isflag:true
+>>>>>>> 3ca7be5ff9a14481ac038fa3ff7fcf43cc62c59e
     })
   },
   onPublicTab: function () {
