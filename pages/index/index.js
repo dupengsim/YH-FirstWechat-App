@@ -1,5 +1,5 @@
 var imglist = require('../../mock/mock-data.js');
-import { onPublicTab, onCreationTab, onShareTab, onArraySort } from '../../common_Js/common.js'
+import { onCreationTab,  onArraySort } from '../../common_Js/common.js'
 
 Page({
 
@@ -58,14 +58,9 @@ Page({
       }
     })
   },
-  onPublicTab: function () {
-    onPublicTab();
-  },
+ 
   onCreationTab: function () {
     onCreationTab();
-  },
-  onShareTab: function () {
-    onShareTab();
   }
   
 })
