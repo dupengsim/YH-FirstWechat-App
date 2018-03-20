@@ -67,6 +67,18 @@ Page({
   },
   onShareTab: function () {
     onShareTab();
+  },
+  onShareAppMessage: function (ops) {
+    return {
+      title: '在亲戚的眼里，你的专业居然是这样的',
+      path: 'pages/index/index',
+      success: function (res) {
+
+      },
+      fail: function (res) {
+
+      }
+    }
   }
 
 })
