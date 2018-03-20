@@ -6,7 +6,8 @@ Page({
 
   data: {
     // imgUrls: [],
-    index: 1
+    index: 1,
+    isflag:true
   },
   onLoad: function () {
     this.setData({
@@ -23,23 +24,14 @@ Page({
       url: '/pages/public/public',
     })
   },
-  onShareBtnTap: function (event) {
-    var itemList = [
-      "分享给微信好友",
-      "保存到本地相册"
-    ]
-    wx.showActionSheet({
-      itemList: itemList,
-      success(res) {
-        if (res.tapIndex === 1) {
-          wx.saveImageToPhotosAlbum({
-            filePath: 'res.tempFilePath',
-            success: function (res) {
-              console.log(res)
-            }
-          })
-        }
-      }
+  Show: function (event) {
+    this.setData({
+      isflag:false
+    })
+  },
+  isShow: function(event){
+    this.setData({
+      isflag:true
     })
   },
   onPublicTab: function () {

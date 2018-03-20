@@ -2,43 +2,112 @@
 @import "../../icon/icon.wxss";
 @import "nav_template/nav_template.wxss";
 
-.conversation_Btn{
-  float:right;
-  width:280rpx;
-  height:70rpx;
-  line-height:35rpx;
-  background:#ffc708;
+.conversation_Btn {
+  float: right;
+  width: 280rpx;
+  height: 70rpx;
+  line-height: 35rpx;
+  background: #ffc708;
   position: absolute;
   right: 0;
-  top:50rpx;
+  top: 50rpx;
   border-top-left-radius: 40rpx;
   border-bottom-left-radius: 40rpx;
-  font-size:20rpx;
+  font-size: 20rpx;
   word-break: normal;
-  color:#fff;
+  color: #fff;
   display: flex;
 }
 
-swiper{
+swiper {
   width: 90%;
-  margin:200rpx auto 0;
-  height:820rpx;
+  margin: 200rpx auto 0;
+  height: 820rpx;
 }
-swiper image{
-  width:100%;
-  height:820rpx;
+
+swiper image {
+  width: 100%;
+  height: 820rpx;
 }
-.swipe-btn-wrapper{
+
+.swipe-btn-wrapper {
   position: absolute;
-  top:140rpx;
+  top: 140rpx;
   left: 35rpx;
-  font-size:30rpx;
-  color:gray;
+  font-size: 30rpx;
+  color: gray;
 }
-.icon-fenxiang{
+
+.icon-shangchuan {
   position: fixed;
   left: 56rpx;
   bottom: 210rpx;
-  font-size:44rpx;
-  color:#333;
+  font-size: 54rpx;
+  color: #333;
+}
+
+.share_alpha_Box {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  z-index: 999;
+}
+
+.shareBox {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: #fff;
+  height: 250rpx;
+}
+
+.share_button {
+  display: flex;
+  height: 150rpx;
+  border-bottom: 1px solid #eaeaea;
+  z-index: 999;
+}
+
+.share_item {
+  display: flex;
+  flex-direction: column;
+  width: 49.88%;
+  text-align: center;
+  justify-content: center;
+}
+
+.share_line {
+  height: 80%;
+  background: #cbcbcb;
+  width: 1px;
+  margin-top: 16rpx;
+}
+
+.icon-logo-wechat {
+  vertical-align: center;
+  color: #5bcd44;
+  font-size: 30px;
+}
+
+.icon-xiazai {
+  vertical-align: center;
+  color: #f5a824;
+  font-size: 30px;
+}
+
+.share_txt {
+  font-size: 28rpx;
+  margin-top: 8rpx;
+}
+
+.share_cancel {
+  text-align: center;
+  line-height: 100rpx;
+  font-size: 30rpx;
+  color: #0a0a0a;
 }
