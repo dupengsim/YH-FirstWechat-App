@@ -1,32 +1,60 @@
-.nav_container{
+.nav_container {
   position: fixed;
-  bottom:0;
-  left:0;
-  border-top:1px solid #eaeaea;
-  box-shadow:3px 5px 2px #ededed;
+  bottom: 0;
+  left: 0;
+  border-top: 1px solid #eaeaea;
+  box-shadow: 3px 5px 2px #ededed;
   display: flex;
-  font-size:14px;
+  font-size: 14px;
   width: 100%;
   justify-content: center;
   background-color: #fff;
 }
-.nav_item{
-  width:33.3%;
-  text-align:center;
-  padding-bottom:15rpx;
+
+.nav_item {
+  width: 33.3%;
+  text-align: center;
+  padding-bottom: 15rpx;
 }
-.icon-yuzhouxingqiu-04{
+
+.icon-yuzhouxingqiu-04 {
   display: block;
   line-height: 20px;
-  font-size:70rpx;
-  color:#f4aa8d;
-  margin-top:15rpx;
+  font-size: 70rpx;
+  color: #f4aa8d;
+  margin-top: 15rpx;
 }
-.creation{
+
+.creation {
   position: relative;
-  top:-38rpx;
+  top: -38rpx;
 }
-.big_Iconfont{
-  font-size:118rpx;
-  margin-bottom:20rpx;
+
+.big_Iconfont {
+  font-size: 118rpx;
+  margin-bottom: 20rpx;
+}
+
+.invite_Btn {
+  line-height: 0;
+  background-color: #fff;
+  border-color: #fff;
+  font-size: 14px;
+  padding-left: 0;
+  padding-right: 0;
+  display: inline;
+  position: none;
+}
+
+button::after {
+  border: none;
+}
+
+.contactView{
+  position: absolute;
+  left:62rpx;
+  width:20%;
+  bottom:16rpx;
+  z-index: 99;
+  opacity: 0;
 }

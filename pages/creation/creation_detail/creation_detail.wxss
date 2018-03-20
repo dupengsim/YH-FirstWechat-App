@@ -1,48 +1,54 @@
 @import "../../../icon/icon.wxss";
 
-.txt{
-  font-size:20rpx;
+.txt {
+  font-size: 20rpx;
   color: #666;
   text-align: center;
   line-height: 35rpx;
-  margin-top:30rpx;
+  margin-top: 30rpx;
   display: block;
   letter-spacing: 2px;
 }
-.card_container{
-  width:90%;
-  margin:0 auto;
-  height:900rpx;
-  margin-top:20rpx;
+
+.card_container {
+  width: 90%;
+  margin: 0 auto;
+  height: 900rpx;
+  margin-top: 20rpx;
 }
-.card_container image{
-  width:100%;
-  height:900rpx;
+
+.card_container image {
+  width: 100%;
+  height: 900rpx;
 }
-.inputTxt{
+
+.inputTxt {
   position: absolute;
-  top:287rpx;
+  top: 287rpx;
   left: 77rpx;
-  color:#000;
-  font-size:60rpx;
+  color: #000;
+  font-size: 60rpx;
 }
-.input-placeholder{
-  color:#000;
-  font-size:50rpx;
+
+.input-placeholder {
+  color: #000;
+  font-size: 50rpx;
 }
-.createBtn{
-  width:200rpx;
-  height:60rpx;
+
+.createBtn {
+  width: 200rpx;
+  height: 60rpx;
   text-align: center;
   line-height: 60rpx;
   background-color: #ffc708;
   color: #333;
-  margin:30rpx auto 0;
-  font-size:26rpx;
-  border-radius:10rpx;
+  margin: 30rpx auto 0;
+  font-size: 26rpx;
+  border-radius: 10rpx;
 }
-.createBtn .icon-fenxiang{
-  margin-right:6rpx;
+
+.createBtn .icon-fenxiang {
+  margin-right: 6rpx;
 }
 
 .canvas {

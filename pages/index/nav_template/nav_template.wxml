@@ -1,6 +1,16 @@
 <template name="navigation">
+  <view class='contactView'>
+    <contact-button class='contact'></contact-button>
+    <contact-button class='contact'></contact-button>
+    <contact-button class='contact'></contact-button>
+    <contact-button class='contact'></contact-button>
+    <contact-button class='contact'></contact-button>
+    <contact-button class='contact'></contact-button>
+    <contact-button class='contact'></contact-button>
+    <contact-button class='contact'></contact-button>
+  </view>
   <view class='nav_container'>
-    <view class='public nav_item' bindtap='onPublicTab'>
+    <view class='public nav_item'>
       <text class='iconfont icon-yuzhouxingqiu-04'></text>
       <text>为专业正名</text>
     </view>
@@ -8,9 +18,9 @@
       <text class='iconfont icon-yuzhouxingqiu-04 big_Iconfont'></text>
       <text>我要吐槽</text>
     </view>
-    <view class='share nav_item' catchtap='onShareTab'>
+    <view class='share nav_item'>
       <text class='iconfont icon-yuzhouxingqiu-04'></text>
-      <text>邀请好友吐槽</text>
+      <button class='invite_Btn' open-type='share'>邀请好友吐槽</button>
     </view>
   </view>
 </template>

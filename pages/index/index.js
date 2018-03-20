@@ -5,7 +5,8 @@ Page({
 
   data: {
     imgUrls: [],
-    index: 1
+    index: 1,
+    isflag: true
   },
   onLoad: function () {
     this.setData({
