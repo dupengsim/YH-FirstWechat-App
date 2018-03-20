@@ -1,0 +1,31 @@
+.nav_container{
+  position: fixed;
+  bottom:0;
+  left:0;
+  border-top:1px solid #eaeaea;
+  box-shadow:3px 5px 2px #ededed;
+  display: flex;
+  font-size:14px;
+  width: 100%;
+  justify-content: center;
+}
+.nav_item{
+  width:33.3%;
+  text-align:center;
+  padding-bottom:15rpx;
+}
+.icon-yuzhouxingqiu-04{
+  display: block;
+  line-height: 20px;
+  font-size:70rpx;
+  color:#f4aa8d;
+  margin-top:15rpx;
+}
+.creation{
+  position: relative;
+  top:-38rpx;
+}
+.big_Iconfont{
+  font-size:118rpx;
+  margin-bottom:20rpx;
+}

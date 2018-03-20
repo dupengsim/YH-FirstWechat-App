@@ -1,5 +1,6 @@
 /**index.wxss**/
 @import "../../icon/icon.wxss";
+@import "nav_template/nav_template.wxss";
 
 .conversation_Btn{
   float:right;
@@ -17,12 +18,7 @@
   color:#fff;
   display: flex;
 }
-.icon-yuzhouxingqiu-04{
-  font-size:70rpx;
-  vertical-align: middle;
-  color:#f4aa8d;
-  margin-top:15rpx;
-}
+
 swiper{
   width: 90%;
   margin:200rpx auto 0;
@@ -42,6 +38,7 @@ swiper image{
 .icon-fenxiang{
   position: fixed;
   left: 56rpx;
-  bottom: 126rpx;
+  bottom: 210rpx;
   font-size:44rpx;
+  color:#333;
 }

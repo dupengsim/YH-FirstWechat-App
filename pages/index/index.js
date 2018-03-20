@@ -1,5 +1,6 @@
 var imglist = require('../../mock/mock-data.js');
-
+// var commonJs = require("../../common_Js/common.js");
+import { onPublicTab, onCreationTab, onShareTab } from '../../common_Js/common.js'
 
 Page({
 
@@ -18,11 +19,11 @@ Page({
     });
   },
   onConversationTap: function (event) {
-    wx.switchTab({
+    wx.navigateTo({
       url: '/pages/public/public',
     })
   },
-  onShareTap: function (event) {
+  onShareBtnTap: function (event) {
     var itemList = [
       "分享给微信好友",
       "保存到本地相册"
@@ -40,6 +41,15 @@ Page({
         }
       }
     })
+  },
+  onPublicTab: function () {
+    onPublicTab();
+  },
+  onCreationTab: function () {
+    onCreationTab();
+  },
+  onShareTab: function () {
+    onShareTab();
   }
 
 })

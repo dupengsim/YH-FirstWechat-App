@@ -1,0 +1,16 @@
+<template name="navigation">
+  <view class='nav_container'>
+    <view class='public nav_item' bindtap='onPublicTab'>
+      <text class='iconfont icon-yuzhouxingqiu-04'></text>
+      <text>为专业正名</text>
+    </view>
+    <view class='creation nav_item' catchtap='onCreationTab'>
+      <text class='iconfont icon-yuzhouxingqiu-04 big_Iconfont'></text>
+      <text>我要吐槽</text>
+    </view>
+    <view class='share nav_item' catchtap='onShareTab'>
+      <text class='iconfont icon-yuzhouxingqiu-04'></text>
+      <text>邀请好友吐槽</text>
+    </view>
+  </view>
+</template>
