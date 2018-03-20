@@ -1,17 +1,7 @@
-var onPublicTab = function () {
-  console.log(123)
-  wx.navigateTo({
-    url: '/pages/public/public',
-  })
-}
+
 var onCreationTab = function () {
   wx.navigateTo({
     url: '/pages/creation/creation',
-  })
-}
-var onShareTab = function () {
-  wx.navigateTo({
-    url: '/pages/share/share',
   })
 }
 var onArraySort = function (array) {//数组随机排序
@@ -27,8 +17,6 @@ var onArraySort = function (array) {//数组随机排序
 
 
 module.exports = {
-  onPublicTab,
   onCreationTab,
-  onShareTab,
   onArraySort
 }
