@@ -69,15 +69,15 @@ Page({
     var arr = _content.split(/[\n,]/g);
     var context = wx.createCanvasContext('myCanvas');
     context.stroke();
-    context.drawImage(_imgUrl, 0, 0, _width - 10, _height - 100);
+    context.drawImage(_imgUrl, 20, 20, _width - 40, _height - 150);
     //填充文字
     context.setFillStyle('white');
     context.font = "bold 24px Arial";
-    context.fillText('#在亲戚的眼里，你是干啥的#', 30, 40);
-    var _top = 65;
+    context.fillText('#在亲戚的眼里，你是干啥的#', 40, 40);
+    var _top = 75;
     for (var i = 0; i < arr.length; i++) {
-      that.drawText(arr[i], 30, _top, 160, context);
-      _top += 20;
+      that.drawText(arr[i], 40, _top, 160, context);
+      _top += 30;
     }
     //绘制图片
     context.draw();

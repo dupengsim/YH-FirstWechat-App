@@ -6,7 +6,7 @@
     <text>来春节不沉默联盟？？戳此领专属福利</text>
   </view>
   <swiper bindchange='swiperChange' circular="true">
-    <block wx:for="{{imgUrls}}">
+    <block wx:for="{{imgUrls}}" wx:key="item.id">
       <swiper-item style="position:relative;">
         <image src="{{item.url}}" class="slide-image" />
       </swiper-item>
@@ -15,7 +15,7 @@
   <view class='swipe-btn-wrapper'>
     <text>{{index}}</text>/
     <text>5</text>
-  </view>
+  </view> 
   <text class='iconfont icon-fenxiang' catchtap='onShareBtnTap'></text>
   <template is="navigation"></template>
 </view>
