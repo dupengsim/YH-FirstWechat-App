@@ -142,5 +142,17 @@ Page({
         })
       }
     })
+  },
+  onShareAppMessage: function (ops) {
+    return {
+      title: '在亲戚的眼里，你的专业居然是这样的',
+      path: 'pages/index/index?id=2',
+      success: function (res) {
+        
+      },
+      fail: function (res) {
+        
+      }
+    }
   }
 })

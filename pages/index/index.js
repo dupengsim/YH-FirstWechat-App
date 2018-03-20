@@ -5,9 +5,11 @@ Page({
 
   data: {
     imgUrls: [],
-    index: 1
+    index: 1,
+    isflag: true
   },
-  onLoad: function () {
+  onLoad: function (options) {
+    console.log(options.id);
     this.setData({
       imgUrls: onArraySort(imglist.imageList)
     })
@@ -52,7 +54,7 @@ Page({
           })
         } else {
           // 分享给微信好友
-          
+
         }
       }
     })
@@ -66,5 +68,5 @@ Page({
   onShareTab: function () {
     onShareTab();
   }
-  
+
 })
