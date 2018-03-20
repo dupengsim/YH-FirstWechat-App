@@ -16,7 +16,6 @@
     <text>{{index}}</text>/
     <text>5</text>
   </view> 
-  <text class='iconfont icon-fenxiang' catchtap='onShareBtnTap'></text>
   </view>
   <text class='iconfont icon-shangchuan' bindtap='show'></text>
   <template is="navigation"></template>
@@ -26,7 +25,7 @@
       <view class='share_button'>
         <view class='share_Friends share_item'>
           <text class='iconfont icon-logo-wechat'></text>
-          <text class='share_txt'>分享给好友</text>
+          <button class='share_txt' open-type='share'>分享给好友</button>
         </view>
         <view class='share_line'></view>
         <view class='save_Photo share_item'>
