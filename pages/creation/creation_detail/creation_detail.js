@@ -23,6 +23,7 @@ Page({
           that.setData({
             imgUrl: item.url
           });
+          break;
         }
       }
     } else {
