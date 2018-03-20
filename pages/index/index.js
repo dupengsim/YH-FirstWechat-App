@@ -62,7 +62,6 @@ Page({
  
   onCreationTab: function () {
     onCreationTab();
-<<<<<<< HEAD
   },
   onShareTab: function () {
     onShareTab();
@@ -78,8 +77,6 @@ Page({
 
       }
     }
-=======
->>>>>>> 533943802300241ff53bab4e9e5f10f039051d0c
   }
 
 })
