@@ -27,20 +27,30 @@ swiper image {
   height: 820rpx;
 }
 
+.iconCircle {
+  width: 60rpx;
+  height: 60rpx;
+  border-radius: 50%;
+  background: #fff;
+  position: absolute;
+  left: 10rpx;
+  bottom: 10rpx;
+  line-height: 56rpx;
+  text-align: center;
+}
+
+.ifx {
+  font-size: 32rpx;
+  color: #000;
+  margin-left: -1rpx;
+}
+
 .swipe-btn-wrapper {
   position: absolute;
   top: 110rpx;
   left: 40rpx;
   font-size: 30rpx;
   color: gray;
-}
-
-.icon-shangchuan {
-  position: absolute;
-  left: 10rpx;
-  bottom: 10rpx;
-  font-size: 54rpx;
-  color: #333;
 }
 
 .share_alpha_Box {

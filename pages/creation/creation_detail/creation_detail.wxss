@@ -41,13 +41,15 @@
   text-align: center;
   line-height: 60rpx;
   background-color: #ffc708;
-  color: #333;
+  color: #000;
   margin: 30rpx auto 0;
   font-size: 26rpx;
   border-radius: 10rpx;
+  font-weight: 600;
 }
 
-.createBtn .icon-fenxiang {
+
+.createBtn .icon-beizhu {
   margin-right: 6rpx;
 }
 

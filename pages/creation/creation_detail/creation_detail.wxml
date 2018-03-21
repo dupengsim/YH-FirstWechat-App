@@ -5,7 +5,7 @@
   </view>
   <textarea class='inputTxt' placeholder='请输入文字……' placeholder-class="input-placeholder" maxlength='{{noteMaxLen}}' bindinput='bindWordimit' bindblur='textAreaBlur'></textarea>
   <view class='createBtn' catchtap='createPoster'>
-    <text class='iconfont icon-fenxiang'></text>
+    <text class='iconfont icon-beizhu'></text>
     <text>生成海报</text>
   </view>
 </view>
