@@ -1,5 +1,5 @@
 var imglist = require('../../mock/mock-data.js');
-import { onCreationTab,  onArraySort } from '../../common_Js/common.js'
+import { onCreationTab, onArraySort } from '../../common_Js/common.js'
 
 Page({
 
@@ -18,11 +18,6 @@ Page({
     this.setData({
       index: event.detail.current + 1
     });
-  },
-  onConversationTap: function (event) {
-    wx.navigateTo({
-      url: '/pages/public/public',
-    })
   },
   onShareBtnTap: function (event) {
     let that = this;
@@ -59,7 +54,7 @@ Page({
       }
     })
   },
- 
+
   onCreationTab: function () {
     onCreationTab();
   },

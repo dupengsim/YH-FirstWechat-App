@@ -4,24 +4,21 @@
 
 .conversation_Btn {
   float: right;
-  width: 280rpx;
-  height: 70rpx;
-  line-height: 35rpx;
-  background: #ffc708;
   position: absolute;
   right: 0;
   top: 50rpx;
-  border-top-left-radius: 40rpx;
-  border-bottom-left-radius: 40rpx;
-  font-size: 20rpx;
-  word-break: normal;
-  color: #fff;
-  display: flex;
+}
+
+.con_contacts {
+  position: absolute;
+  top: 15rpx;
+  bottom: 0;
+  opacity: 0;
 }
 
 swiper {
   width: 90%;
-  margin: 200rpx auto 0;
+  margin: 160rpx auto 0;
   height: 820rpx;
 }
 
@@ -32,16 +29,16 @@ swiper image {
 
 .swipe-btn-wrapper {
   position: absolute;
-  top: 140rpx;
-  left: 35rpx;
+  top: 110rpx;
+  left: 40rpx;
   font-size: 30rpx;
   color: gray;
 }
 
 .icon-shangchuan {
-  position: fixed;
-  left: 56rpx;
-  bottom: 210rpx;
+  position: absolute;
+  left: 10rpx;
+  bottom: 10rpx;
   font-size: 54rpx;
   color: #333;
 }

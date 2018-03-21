@@ -5,7 +5,7 @@
   border-top: 1px solid #eaeaea;
   box-shadow: 3px 5px 2px #ededed;
   display: flex;
-  font-size: 14px;
+  font-size: 12px;
   width: 100%;
   justify-content: center;
   background-color: #fff;
@@ -14,25 +14,30 @@
 .nav_item {
   width: 33.3%;
   text-align: center;
-  padding-bottom: 15rpx;
 }
 
-.icon-yuzhouxingqiu-04 {
+.icons_item {
   display: block;
-  line-height: 20px;
-  font-size: 70rpx;
-  color: #f4aa8d;
-  margin-top: 15rpx;
+  line-height: 24px;
+  font-size: 44rpx;
+  color: #ffd14e;
+  margin-top: 20rpx;
+}
+.icon-xiaoxi{
+  color: #000;
+}
+.icon-woyaoyaoqingicon{
+  color: #000;
 }
 
 .creation {
   position: relative;
-  top: -38rpx;
+  top: -42rpx;
 }
 
 .big_Iconfont {
-  font-size: 118rpx;
-  margin-bottom: 20rpx;
+  font-size: 100rpx;
+  padding-bottom: 30rpx;
 }
 
 .invite_Btn {

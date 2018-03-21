@@ -1,8 +1,6 @@
 {
   "pages":[
     "pages/index/index",
-    "pages/public/public",
-    "pages/share/share",
     "pages/creation/creation",
     "pages/creation/creation_detail/creation_detail"
   ],

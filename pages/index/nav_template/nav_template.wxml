@@ -11,15 +11,15 @@
   </view>
   <view class='nav_container'>
     <view class='public nav_item'>
-      <text class='iconfont icon-yuzhouxingqiu-04'></text>
+       <text class='iconfont icon-xiaoxi icons_item'></text> 
       <text>为专业正名</text>
     </view>
     <view class='creation nav_item' catchtap='onCreationTab'>
-      <text class='iconfont icon-yuzhouxingqiu-04 big_Iconfont'></text>
+      <text class='iconfont icon-qianbipencil86 big_Iconfont icons_item'></text>
       <text>我要吐槽</text>
     </view>
     <view class='share nav_item'>
-      <text class='iconfont icon-yuzhouxingqiu-04'></text>
+      <text class='iconfont icon-woyaoyaoqingicon icons_item'></text>
       <button class='invite_Btn' open-type='share'>邀请好友吐槽</button>
     </view>
   </view>

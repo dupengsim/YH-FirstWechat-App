@@ -15,11 +15,11 @@
   line-height:60rpx;
   text-align:center;
   background:#ffc708;
-  color: #543c00;
+  color: #000;
   font-weight:600;
   z-index: 9999;
   font-size:26rpx;
   left:50%;
   margin-left:-140rpx;
-  border-radius: 25rpx;
+  border-radius: 65rpx;
 }

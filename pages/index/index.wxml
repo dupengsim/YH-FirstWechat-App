@@ -1,40 +1,49 @@
 <!--index.wxml-->
 <import src="nav_template/nav_template.wxml" />
 <view class='container'>
-  <view class='conversation_Btn' catchtap='onConversationTap'>
-    <text class='iconfont icon-yuzhouxingqiu-04'></text>
-    <text>来春节不沉默联盟？？戳此领专属福利</text>
+  <view class='conversation_Btn'>
+    <image src='/images/icon/converImg.png' style='width:282rpx;height:72rpx;'></image>
+    <view class='con_contacts'>
+      <contact-button></contact-button>
+      <contact-button></contact-button>
+      <contact-button></contact-button>
+      <contact-button></contact-button>
+      <contact-button></contact-button>
+      <contact-button></contact-button>
+      <contact-button></contact-button>
+    </view>
   </view>
   <swiper bindchange='swiperChange' circular="true">
     <block wx:for="{{imgUrls}}" wx:key="item.id">
       <swiper-item style="position:relative;">
         <image src="{{item.url}}" class="slide-image" />
+        <text class='iconfont icon-shangchuan' bindtap='show'></text>
       </swiper-item>
     </block>
   </swiper>
   <view class='swipe-btn-wrapper'>
     <text>{{index}}</text>/
     <text>5</text>
-  </view> 
   </view>
-  <text class='iconfont icon-shangchuan' bindtap='show'></text>
-  <template is="navigation"></template>
-  <!-- 分享 -->
-  <view class='share_alpha_Box' hidden='{{isflag}}'>
-    <view class='shareBox'>
-      <view class='share_button'>
-        <view class='share_Friends share_item'>
-          <text class='iconfont icon-logo-wechat'></text>
-          <button class='share_txt' open-type='share'>分享给好友</button>
-        </view>
-        <view class='share_line'></view>
-        <view class='save_Photo share_item'>
-          <text class='iconfont icon-xiazai'></text>
-          <text class='share_txt'>保存到相册</text>
-        </view>
+</view>
+
+<template is="navigation"></template>
+<!-- 分享 -->
+<view class='share_alpha_Box' hidden='{{isflag}}'>
+  <view class='shareBox'>
+    <view class='share_button'>
+      <view class='share_Friends share_item'>
+        <text class='iconfont icon-logo-wechat'></text>
+        <button class='share_txt' open-type='share'>分享给好友</button>
       </view>
-      <view class='share_cancel'>
-        <text>取消</text>
+      <view class='share_line'></view>
+      <view class='save_Photo share_item'>
+        <text class='iconfont icon-xiazai'></text>
+        <text class='share_txt'>保存到相册</text>
       </view>
+    </view>
+    <view class='share_cancel'>
+      <text>取消</text>
+    </view>
   </view>
 </view>
