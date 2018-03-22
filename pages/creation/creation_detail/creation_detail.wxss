@@ -26,17 +26,17 @@
   position: absolute;
   top: 287rpx;
   left: 77rpx;
-  color: #000;
+  color: #fff;
   font-size: 60rpx;
 }
 
 .input-placeholder {
-  color: #000;
+  color: #fff;
   font-size: 50rpx;
 }
 
 .createBtn {
-  width: 200rpx;
+  width: 220rpx;
   height: 60rpx;
   text-align: center;
   line-height: 60rpx;
@@ -44,7 +44,7 @@
   color: #000;
   margin: 30rpx auto 0;
   font-size: 26rpx;
-  border-radius: 10rpx;
+  border-radius: 50rpx;
   font-weight: 600;
 }
 
@@ -54,8 +54,26 @@
 }
 
 .canvas {
-  border: 1px solid #ccc;
-  /* width: 100%;
-  height: 400px;
-  word-break: break-all; */
+  /* border: 1px solid #ccc; */
+   width: 100%;
+  height: 900rpx;
+  word-break: break-all; 
+  overflow: hidden;
+}
+.imgBtns{
+  /* display: flex; */
+  margin-top:40rpx;
+  margin-left: 100rpx;
+}
+.canvasBtn{
+  border: none;
+  background-color: #f7c945; 
+  color: #000;
+  font-weight: 600;
+  line-height: 40rpx;
+  font-size: 12px;
+  padding-top:10rpx;
+  padding-bottom:10rpx;
+  float: left;
+  margin-left: 50rpx;
 }

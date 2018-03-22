@@ -17,16 +17,16 @@ Page({
       aniStyle:true
     })
   },
-  outbtn: function(e){
+  outbtn: function (e) {
     var that = this;
-    this.setData({
-      aniStyle:false
-    })
-    setTimeout(function() {
+    setTimeout(function () {
       that.setData({
         mengShow: false
       })
-    },500)
+    }, 300),
+    this.setData({
+      aniStyle:false
+    })
   },
   inbtn: function(e){
     console.log("in")
@@ -103,16 +103,6 @@ Page({
       }
     })
   },
-  // show: function () {
-  //   this.setData({
-  //     isflag: false
-  //   })
-  // },
-  // onHide: function () {
-  //   this.setData({
-  //     isflag: true
-  //   })
-  // },
   onCreationTab: function () {
     onCreationTab();
   },

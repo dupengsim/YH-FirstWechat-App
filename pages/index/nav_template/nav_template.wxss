@@ -18,7 +18,7 @@
 
 .icons_item {
   display: block;
-  line-height: 24px;
+  line-height: 12px;
   font-size: 44rpx;
   color: #ffd14e;
   margin-top: 20rpx;
@@ -39,7 +39,8 @@
 
 .big_Iconfont {
   font-size: 100rpx;
-  padding-bottom: 30rpx;
+  padding-bottom: 41rpx;
+  line-height: 27rpx;
 }
 
 .invite_Btn {
@@ -64,4 +65,13 @@ button::after {
   bottom: 16rpx;
   z-index: 99;
   opacity: 0;
+}
+
+.share{
+  font-size:12px;
+  background-color: #fff;
+}
+.public{
+  font-size:12px;
+  background-color:#fff;
 }

@@ -50,7 +50,12 @@ Page({
       content: evt.detail.value
     })
   },
-  createPoster: function () { //生成海报
+  createPoster: function () { 
+    
+    
+    
+    
+    //生成海报
     let that = this;
     var _width = 0;
     var _height = 0;

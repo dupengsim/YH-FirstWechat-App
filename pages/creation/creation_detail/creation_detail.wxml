@@ -10,8 +10,12 @@
   </view>
 </view>
 
-<canvas wx:if="{{isshow==0}}" canvas-id='myCanvas' class="canvas" style="width:{{clientWidth}}px;height:{{clientHeight}}px;"></canvas>
-<view wx:if="{{isshow==0}}">
-  <button catchtap='saveImage'>导出图片</button>
-  <button class='share' id="shareBtn" open-type="share">分享给好友</button>
+<canvas wx:if="{{isshow==0}}" canvas-id='myCanvas' class="canvas"></canvas>
+<view wx:if="{{isshow==0}}" class="imgBtns">
+  <button class='canvasBtn' catchtap='saveImage'>
+    <text class='iconfont icon-image'></text>
+  保存到相册</button>
+  <button class='share canvasBtn' id="shareBtn" open-type="share">
+    <text class='iconfont icon-fasong'></text>
+  发送给好友</button>
 </view>
