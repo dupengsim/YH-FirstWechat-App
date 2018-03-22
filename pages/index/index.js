@@ -54,7 +54,16 @@ Page({
       }
     })
   },
-
+  show: function () {
+    this.setData({
+      isflag: false
+    })
+  },
+  onHide: function () {
+    this.setData({
+      isflag: true
+    })
+  },
   onCreationTab: function () {
     onCreationTab();
   },
