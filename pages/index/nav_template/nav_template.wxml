@@ -19,7 +19,7 @@
       <text>我要吐槽</text>
     </view>
     <view class='share nav_item'>
-      <text class='iconfont icon-woyaoyaoqingicon icons_item'></text>
+       <text class='iconfont icon-woyaoyaoqingicon icons_item'></text> 
       <button class='invite_Btn' open-type='share'>邀请好友吐槽</button>
     </view>
   </view>

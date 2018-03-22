@@ -23,10 +23,12 @@
   color: #ffd14e;
   margin-top: 20rpx;
 }
-.icon-xiaoxi{
+
+.icon-xiaoxi {
   color: #000;
 }
-.icon-woyaoyaoqingicon{
+
+.icon-woyaoyaoqingicon {
   color: #000;
 }
 
@@ -44,7 +46,7 @@
   line-height: 0;
   background-color: #fff;
   border-color: #fff;
-  font-size: 14px;
+  font-size: 12px;
   padding-left: 0;
   padding-right: 0;
   display: inline;
@@ -55,11 +57,11 @@ button::after {
   border: none;
 }
 
-.contactView{
+.contactView {
   position: absolute;
-  left:62rpx;
-  width:20%;
-  bottom:16rpx;
+  left: 62rpx;
+  width: 20%;
+  bottom: 16rpx;
   z-index: 99;
   opacity: 0;
 }

@@ -6,8 +6,31 @@ Page({
   data: {
     imgUrls: [],
     index: 1,
-    isflag: true
+    isflag: true,
+    mengShow: false,
+    aniStyle:true
   },
+  showMeng: function(e) {
+    this.setData({
+      mengShow:true,
+      aniStyle:true
+    })
+  },
+  outbtn: function(e){
+    var that = this;
+    this.setData({
+      aniStyle:false
+    })
+    setTimeout(function() {
+      that.setData({
+        mengShow: false
+      })
+    },500)
+  },
+  inbtn: function(e){
+    console.log("in")
+  },
+
   onLoad: function (options) {
     console.log(options.id);
     this.setData({
@@ -54,11 +77,11 @@ Page({
       }
     })
   },
-  show: function () {
-    this.setData({
-      isflag: false
-    })
-  },
+  // show: function () {
+  //   this.setData({
+  //     isflag: false
+  //   })
+  // },
   onHide: function () {
     this.setData({
       isflag: true

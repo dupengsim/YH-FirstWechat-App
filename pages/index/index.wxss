@@ -98,7 +98,7 @@ swiper image {
 .icon-logo-wechat {
   vertical-align: center;
   color: #5bcd44;
-  font-size: 30px;
+  font-size: 32px;
 }
 
 .icon-xiazai {
@@ -112,9 +112,43 @@ swiper image {
   margin-top: 8rpx;
 }
 
+.stb {
+  padding: 0;
+  background-color: #fff;
+  line-height: 25rpx;
+}
+
 .share_cancel {
   text-align: center;
   line-height: 100rpx;
   font-size: 30rpx;
   color: #0a0a0a;
+}
+
+@keyframes slidedown {
+  from {
+    transform: translateY(0);
+  }
+
+  to {
+    transform: translateY(100%);
+  }
+}
+
+.slidedown {
+  animation: slidedown 0.5s linear;
+}
+
+.slideup {
+  animation: slideup 0.5s linear;
+}
+
+@keyframes slideup {
+  from {
+    transform: translateY(100%);
+  }
+
+  to {
+    transform: translateY(0);
+  }
 }
