@@ -136,11 +136,11 @@ swiper image {
 }
 
 .slidedown {
-  animation: slidedown 0.3s linear;
+  animation: slidedown 0.1s linear;
 }
 
 .slideup {
-  animation: slideup 0.3s linear;
+  animation: slideup 0.1s linear;
 }
 
 @keyframes slideup {

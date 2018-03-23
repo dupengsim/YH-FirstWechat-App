@@ -1,4 +1,5 @@
 var creationList = require('../../../mock/mock-data.js');
+import { firstOrDefault } from '../../../common_Js/common.js'
 var app = getApp();
 
 Page({
@@ -16,16 +17,10 @@ Page({
     let that = this;
     var postId = options.id;
     if (postId != undefined && postId != '' && postId.length > 0) {
-      var tempList = creationList.creationList;
-      for (var i = 0; i < tempList.length; i++) {
-        var item = tempList[i];
-        if (item.id == postId) {
-          that.setData({
-            imgUrl: item.url
-          });
-          break;
-        }
-      }
+      var currentImage = creationList.creationList.firstOrDefault(postId);
+      that.setData({
+        imgUrl: currentImage.url
+      });
     } else {
       that.setData({
         imgUrl: app.globalData.chooseImgUrl[0]
@@ -50,11 +45,11 @@ Page({
       content: evt.detail.value
     })
   },
-  createPoster: function () { 
-    
-    
-    
-    
+  createPoster: function () {
+
+
+
+
     //生成海报
     let that = this;
     var _width = 0;
@@ -64,8 +59,8 @@ Page({
         _width = res.windowWidth;
         _height = res.windowHeight;
         that.setData({
-          clientWidth: res.windowWidth,
-          clientHeight: res.windowHeight
+          clientWidth: _width,
+          clientHeight: _height
         })
       },
     })
@@ -77,12 +72,12 @@ Page({
     context.drawImage(_imgUrl, 20, 20, _width - 40, _height - 150);
     //填充文字
     context.setFillStyle('white');
-    context.font = "bold 24px Arial";
-    context.fillText('#在亲戚的眼里，你是干啥的#', 40, 40);
-    var _top = 75;
+    context.font = "bold 16px Arial";
+    context.fillText('#在他人眼里，我竟然是这样的艺术生#', 40, 60);
+    var _top = 100;
     for (var i = 0; i < arr.length; i++) {
-      that.drawText(arr[i], 40, _top, 160, context);
-      _top += 30;
+      that.drawText(arr[i], 40, _top, 240, context);
+      _top += 40;
     }
     //绘制图片
     context.draw();
@@ -111,7 +106,7 @@ Page({
     var chr = t.split("");
     var temp = "";
     var row = [];
-    context.font = "bold 24px Arial";
+    context.font = "bold 20px Arial";
     context.fillStyle = "white";
     context.textBaseline = "middle";
     for (var a = 0; a < chr.length; a++) {
@@ -126,7 +121,7 @@ Page({
     }
     row.push(temp);
     for (var b = 0; b < row.length; b++) {
-      context.fillText(row[b], x, y + (b + 1) * 20);
+      context.fillText(row[b], x, y + (b + 1) * 20 + 30);
     }
   },
   saveImage: function () { //保存海报到相册
@@ -135,10 +130,14 @@ Page({
     wx.saveImageToPhotosAlbum({
       filePath: that.data.imgUrl,
       success: function (res) {
-        wx.showToast({
-          title: '保存到相册成功',
-          icon: 'success',
-          duration: 1000
+        wx.showModal({
+          title: '小提示',
+          showCancel: false,
+          content: '图片已经保存至相册啦，快秀到朋友圈给大家看吧！',
+          success: function (res) {
+            if (res.confirm) {
+            }
+          }
         })
       },
       fail: function (res) {
@@ -151,12 +150,12 @@ Page({
   onShareAppMessage: function (ops) {
     return {
       title: '在亲戚的眼里，你的专业居然是这样的',
-      path: 'pages/index/index?id=2',
+      path: '/pages/index/index?id=2',
       success: function (res) {
-        
+
       },
       fail: function (res) {
-        
+
       }
     }
   }
