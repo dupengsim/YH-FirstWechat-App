@@ -2,11 +2,17 @@
 @import "../../icon/icon.wxss";
 @import "nav_template/nav_template.wxss";
 
+.container{
+  position: static;
+}
 .conversation_Btn {
   float: right;
   position: absolute;
   right: 0;
-  top: 50rpx;
+  top: 20rpx;
+  box-shadow: 2rpx 3rpx 2rpx 1rpx #999;
+  border-top-left-radius: 50rpx;
+  border-bottom-left-radius: 50rpx;
 }
 
 .con_contacts {
@@ -19,7 +25,7 @@
 swiper {
   width: 90%;
   margin: 160rpx auto 0;
-  height: 820rpx;
+  height: 750rpx;
 }
 
 swiper image {
@@ -33,8 +39,8 @@ swiper image {
   border-radius: 50%;
   background: #fff;
   position: absolute;
-  left: 10rpx;
-  bottom: 10rpx;
+  left: 20rpx;
+  bottom: 20rpx;
   line-height: 56rpx;
   text-align: center;
 }
@@ -151,4 +157,11 @@ swiper image {
   to {
     transform: translateY(0);
   }
+}
+
+.containerMain{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width:100%;
 }

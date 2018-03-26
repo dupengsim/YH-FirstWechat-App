@@ -40,8 +40,8 @@
   height: 60rpx;
   text-align: center;
   line-height: 60rpx;
-  background-color: #ffc708;
-  color: #000;
+  background-color: #01abe9;
+  color: #fff;
   margin: 30rpx auto 0;
   font-size: 26rpx;
   border-radius: 50rpx;
@@ -67,8 +67,8 @@
 }
 .canvasBtn{
   border: none;
-  background-color: #f7c945; 
-  color: #000;
+  background-color: #01abe9; 
+  color: #fff;
   font-weight: 600;
   line-height: 40rpx;
   font-size: 12px;

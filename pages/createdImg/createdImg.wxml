@@ -1,0 +1,13 @@
+<view class='container'>
+  <image class='createdImg' src='/images/in_2.jpg'></image>
+  <view class='createdBtn'>
+    <button class='createdButton'>
+      <text class='iconfont icon-image'></text>
+      保存到相册
+    </button>
+    <button class='createdButton'>
+      <text class='iconfont icon-fasong'></text>
+      发送给好友
+    </button>
+  </view>
+</view>
