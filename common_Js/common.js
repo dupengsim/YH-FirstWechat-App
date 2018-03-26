@@ -26,9 +26,18 @@ var firstOrDefault = Array.prototype.firstOrDefault = function (id) {
   }
   return null;
 }
+// 生成随机数
+var buildRandom = function (n) {
+  var rnd = '';
+  for (var i = 0; i < n; i++) {
+    rnd += Math.floor(Math.random() * 10);
+  }
+  return rnd;
+}
 
 module.exports = {
   onCreationTab,
   onArraySort,
-  firstOrDefault
+  firstOrDefault,
+  buildRandom
 }

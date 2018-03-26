@@ -1,5 +1,5 @@
 var creationList = require('../../../mock/mock-data.js');
-import { firstOrDefault } from '../../../common_Js/common.js'
+import { firstOrDefault, buildRandom } from '../../../common_Js/common.js'
 var app = getApp();
 
 Page({
@@ -8,10 +8,12 @@ Page({
     noteMaxLen: "48",
     limitNoteLen: "48",
     imgUrl: '',
+    newImageUrl: '',
     content: '',//输入的文字内容
     isshow: 1,
     clientWidth: 0,
-    clientHeight: 0
+    clientHeight: 0,
+    storageKey: 0
   },
   onLoad: function (options) {
     let that = this;
@@ -45,12 +47,7 @@ Page({
       content: evt.detail.value
     })
   },
-  createPoster: function () {
-
-
-
-
-    //生成海报
+  createPoster: function () {//生成海报
     let that = this;
     var _width = 0;
     var _height = 0;
@@ -87,9 +84,14 @@ Page({
         canvasId: 'myCanvas',
         success: function (res) {
           var tempFilePath = res.tempFilePath;
-          console.log(tempFilePath);
+          // 将生成的海报信息保存到本地缓存中，以便下次用户查看
+          var rnd = parseInt(buildRandom(5));//缓存KEY
+          var cacheValue = [{ "id": that.data.storageKey, "url": tempFilePath }];//缓存value
+          wx.setStorageSync("" + rnd + "", cacheValue);//同步缓存
+
           that.setData({
-            imgUrl: tempFilePath
+            newImageUrl: tempFilePath,
+            storageKey: rnd
           });
         },
         fail: function (res) {
@@ -126,9 +128,8 @@ Page({
   },
   saveImage: function () { //保存海报到相册
     let that = this;
-    console.log(that.data.imgUrl);
     wx.saveImageToPhotosAlbum({
-      filePath: that.data.imgUrl,
+      filePath: that.data.newImageUrl,
       success: function (res) {
         wx.showModal({
           title: '小提示',
@@ -148,9 +149,10 @@ Page({
     })
   },
   onShareAppMessage: function (ops) {
+    let that = this;
     return {
-      title: '在亲戚的眼里，你的专业居然是这样的',
-      path: '/pages/index/index?id=2',
+      title: '在他人眼里，我竟然是这样的艺术生......',
+      path: '/pages/logs/logs?id=' + that.data.storageKey,//TODO:改成专属页面
       success: function (res) {
 
       },
