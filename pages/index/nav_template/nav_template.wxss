@@ -1,14 +1,15 @@
 .nav_container {
-  position: fixed;
+  /* position: fixed;
   bottom: 0;
-  left: 0;
+  left: 0; */
   border-top: 1px solid #eaeaea;
-  box-shadow: 3px 5px 2px #ededed;
   display: flex;
   font-size: 12px;
   width: 100%;
   justify-content: center;
   background-color: #fff;
+  box-shadow: 0 0 0 0 #eaeaea;
+  margin-top:95rpx;
 }
 
 .nav_item {
@@ -20,7 +21,7 @@
   display: block;
   line-height: 12px;
   font-size: 44rpx;
-  color: #ffd14e;
+  color: #01abe9;
   margin-top: 20rpx;
 }
 

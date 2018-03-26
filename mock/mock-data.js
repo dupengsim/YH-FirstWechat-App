@@ -2,23 +2,51 @@
 var index_data = [
   {
     "id": 1,
-    "url": "/images/in_1.jpg"
+    "url": "/images/bg_img/img01.jpg"
   },
   {
     "id": 2,
-    "url": "/images/in_2.jpg"
+    "url": "/images/bg_img/img02.jpg"
   },
   {
     "id": 3,
-    "url": "/images/in_3.jpg"
+    "url": "/images/bg_img/img03.jpg"
   },
   {
     "id": 4,
-    "url": "/images/in_4.jpg"
+    "url": "/images/bg_img/img04.jpg"
   },
   {
     "id": 5,
-    "url": "/images/in_5.jpg"
+    "url": "/images/bg_img/img05.jpg"
+  },
+  {
+    "id": 6,
+    "url": "/images/bg_img/img06.jpg"
+  },
+  {
+    "id": 7,
+    "url": "/images/bg_img/img07.jpg"
+  },
+  {
+    "id": 8,
+    "url": "/images/bg_img/img08.jpg"
+  },
+  {
+    "id": 9,
+    "url": "/images/bg_img/img09.jpg"
+  },
+  {
+    "id": 10,
+    "url": "/images/bg_img/img10.jpg"
+  },
+  {
+    "id": 11,
+    "url": "/images/bg_img/img11.jpg"
+  },
+  {
+    "id": 12,
+    "url": "/images/bg_img/img12.jpg"
   }
 ];
 
@@ -26,47 +54,52 @@ var index_data = [
 var create_data = [
   {
     "id": 1,
-    "url": "/images/in_1.jpg"
+    "url": "/images/bg_img_none/n_img01.jpg"
   },
   {
     "id": 2,
-    "url": "/images/in_2.jpg"
+    "url": "/images/bg_img_none/n_img02.jpg"
   },
   {
     "id": 3,
-    "url": "/images/in_3.jpg"
+    "url": "/images/bg_img_none/n_img03.jpg"
   },
   {
     "id": 4,
-    "url": "/images/in_4.jpg"
+    "url": "/images/bg_img_none/n_img04.jpg"
   },
   {
     "id": 5,
-    "url": "/images/in_5.jpg"
+    "url": "/images/bg_img_none/n_img05.jpg"
   },
   {
-    "id": 1,
-    "url": "/images/in_1.jpg"
+    "id": 6,
+    "url": "/images/bg_img_none/n_img06.jpg"
   },
   {
-    "id": 2,
-    "url": "/images/in_2.jpg"
+    "id": 7,
+    "url": "/images/bg_img_none/n_img07.jpg"
   },
   {
-    "id": 3,
-    "url": "/images/in_3.jpg"
+    "id": 8,
+    "url": "/images/bg_img_none/n_img08.jpg"
   },
   {
-    "id": 4,
-    "url": "/images/in_4.jpg"
+    "id": 9,
+    "url": "/images/bg_img_none/n_img09.jpg"
+  },
+
+  {
+    "id": 10,
+    "url": "/images/bg_img_none/n_img10.jpg"
   },
   {
-    "id": 5,
-    "url": "/images/in_5.jpg"
+    "id": 11,
+    "url": "/images/bg_img_none/n_img11.jpg"
   },
   {
-    "id": 1,
-    "url": "/images/in_1.jpg"
+    "id": 12,
+    "url": "/images/bg_img_none/n_img12.jpg"
   }
 ];
 
