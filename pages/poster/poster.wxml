@@ -12,8 +12,6 @@
     <image class='conBtnImg' src='/images/icon/converImg.png'></image>
   </view>
   <view class='imgMain'>
-    <image class='imm' src='/images/bg_img/img05.jpg'></image>
-     <button class='imgMain_Btn'>
     <image class='imm' src='{{imgUrl}}'></image>
      <button class='imgMain_Btn' catchtap='buildme'>
         <text class='iconfont icon-beizhu'></text>
