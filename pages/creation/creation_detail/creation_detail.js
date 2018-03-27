@@ -37,8 +37,7 @@ Page({
       wx.showModal({
         title: '小提示',
         content: "最多可输入48个字符",
-        showCancel: false,
-        confirmText: "确定"
+        showCancel: false
       })
     }
     this.setData({
@@ -53,13 +52,12 @@ Page({
     })
   },
   createPoster: function (event) {
-    var value = event.detail.value;
-    var len = parseInt(value.length);
-    console.log(len)
+    var len = this.data.content.length;
     if (len === 0) {
-      wx.showToast({
-        title: '请输入文字',
-        duration: 2000
+      wx.showModal({
+        title: '小提示',
+        content: "快来输入你的那句话吧",
+        showCancel: false
       })
     } else {
       //生成海报
