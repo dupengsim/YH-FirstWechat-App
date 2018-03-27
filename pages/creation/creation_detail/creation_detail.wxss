@@ -25,15 +25,26 @@
 
 .inputTxt {
   position: absolute;
-  top: 287rpx;
+  top: 240rpx;
   left: 77rpx;
   color: #fff;
   font-size: 60rpx;
+  height:550rpx;
 }
 
 .input-placeholder {
   color: #fff;
   font-size: 50rpx;
+}
+
+.creation_Title{
+  position: absolute;
+  top:133rpx;
+  left:74rpx;
+  color: #fff;
+  font-size: 32rpx;
+  font-weight: 600;
+  opacity: 0.9;
 }
 
 .createBtn {

@@ -33,8 +33,13 @@ Page({
   bindWordimit: function (event) {
     var value = event.detail.value;
     var len = parseInt(value.length);
-    if (len > this.data.noteMaxLen) {
-      return;
+    if (len >= this.data.noteMaxLen) {
+      wx.showModal({
+        title: '小提示',
+        content: "最多可输入48个字符",
+        showCancel: false,
+        confirmText: "确定"
+      })
     }
     this.setData({
       currentNoteLen: len,  //当前字数 
@@ -47,64 +52,76 @@ Page({
       content: evt.detail.value
     })
   },
-  createPoster: function () {
-    //生成海报
-    let that = this;
-    var _width = 0;
-    var _height = 0;
-    wx.getSystemInfo({
-      success: function (res) {
-        _width = res.windowWidth;
-        _height = res.windowHeight;
-        console.log(_height);
-        that.setData({
-          clientWidth: _width,
-          clientHeight: _height
-        })
-      },
-    })
-    var _imgUrl = that.data.imgUrl;
-    var _content = that.data.content;
-    var arr = _content.split(/[\n,]/g);
-    var context = wx.createCanvasContext('myCanvas');
-    context.stroke();
-    context.drawImage(_imgUrl, 20, 20, _width - 40, _height - 150);
-    //填充文字
-    context.setFillStyle('white');
-    context.font = "bold 16px Arial";
-    context.fillText('#在他人眼里，我竟然是这样的艺术生#', 40, 60);
-    var _top = 100;
-    for (var i = 0; i < arr.length; i++) {
-      that.drawText(arr[i], 40, _top, 240, context);
-      _top += 40;
-    }
-    //绘制图片
-    context.draw();
-    //输出最终图片的路径
-    setTimeout(() => {
-      wx.canvasToTempFilePath({
-        canvasId: 'myCanvas',
+  createPoster: function (event) {
+    var value = event.detail.value;
+    var len = parseInt(value.length);
+    console.log(len)
+    if (len === 0) {
+      wx.showToast({
+        title: '请输入文字',
+        duration: 2000
+      })
+    } else {
+      //生成海报
+      let that = this;
+      var _width = 0;
+      var _height = 0;
+      wx.getSystemInfo({
         success: function (res) {
-          var tempFilePath = res.tempFilePath;
-          // 将生成的海报信息保存到本地缓存中，以便下次用户查看
-          var rnd = parseInt(buildRandom(5));//缓存KEY
-          var cacheValue = [{ "id": that.data.storageKey, "url": tempFilePath }];//缓存value
-          wx.setStorageSync("" + rnd + "", cacheValue);//同步缓存
-
+          _width = res.windowWidth;
+          _height = res.windowHeight;
+          console.log(_height);
           that.setData({
-            newImageUrl: tempFilePath,
-            storageKey: rnd
-          });
+            clientWidth: _width,
+            clientHeight: _height
+          })
         },
-        fail: function (res) {
-          console.log(res);
-        }
-      }, that)
-    }, 1000)
+      })
+      var _imgUrl = that.data.imgUrl;
+      var _content = that.data.content;
+      var arr = _content.split(/[\n,]/g);
+      var context = wx.createCanvasContext('myCanvas');
+      context.stroke();
+      context.drawImage(_imgUrl, 20, 20, _width - 40, _height - 150);
+      //填充文字
+      context.setFillStyle('white');
+      context.font = "bold 16px Arial";
+      context.fillText('#在他人眼里，我竟然是这样的艺术生#', 40, 60);
+      var _top = 100;
+      for (var i = 0; i < arr.length; i++) {
+        that.drawText(arr[i], 40, _top, 240, context);
+        _top += 40;
+      }
+      //绘制图片
+      context.draw();
+      //输出最终图片的路径
+      setTimeout(() => {
+        wx.canvasToTempFilePath({
+          canvasId: 'myCanvas',
+          success: function (res) {
+            var tempFilePath = res.tempFilePath;
+            // 将生成的海报信息保存到本地缓存中，以便下次用户查看
+            var rnd = parseInt(buildRandom(5));//缓存KEY
+            var cacheValue = [{ "id": that.data.storageKey, "url": tempFilePath }];//缓存value
+            wx.setStorageSync("" + rnd + "", cacheValue);//同步缓存
 
-    that.setData({
-      isshow: 0
-    });
+            that.setData({
+              newImageUrl: tempFilePath,
+              storageKey: rnd
+            });
+          },
+          fail: function (res) {
+            console.log(res);
+          }
+        }, that)
+      }, 1000)
+
+      that.setData({
+        isshow: 0
+      });
+    }
+
+
   },
   drawText: function (t, x, y, w, context) { // 设置文本自动换行
     var chr = t.split("");

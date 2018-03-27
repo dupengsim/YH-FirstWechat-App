@@ -1,5 +1,5 @@
 <view class='container'>
-  <image class='saveImg' src='/images/in_1.jpg'></image>
+  <image class='saveImg' src='/images/bg_img/img01.jpg'></image>
   <view class='codeView'>
     <image class='codeImg' src='/images/code.jpg'></image>
     <text>艺术类专业遇到过哪些误解呢？识别二维码查看。</text>

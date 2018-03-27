@@ -3,6 +3,7 @@
   <view class='card_container'>
     <image src='{{imgUrl}}'></image>
   </view>
+  <text class='creation_Title'>#在他人眼里，我竟然是这样的艺术生#</text>
   <textarea class='inputTxt' placeholder='请输入文字……' placeholder-class="input-placeholder" maxlength='{{noteMaxLen}}' bindinput='bindWordimit' bindblur='textAreaBlur'></textarea>
   <view class='createBtn' catchtap='createPoster'>
     <text class='iconfont icon-beizhu'></text>

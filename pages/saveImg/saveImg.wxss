@@ -7,12 +7,12 @@
   height:900rpx;
 }
 .codeView{
-  margin:50rpx auto;
+  margin:30rpx auto;
   text-align: center;
 }
 .codeImg{
-  width:200rpx;
-  height:200rpx;
+  width:160rpx;
+  height:160rpx;
   display: block;
   margin: 0 auto;
 }
