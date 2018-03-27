@@ -1,5 +1,5 @@
 <view class='container'>
-  <image class='createdImg' src='/images/in_2.jpg'></image>
+  <image class='createdImg' src='/images/bg_img/img03.jpg'></image>
   <view class='createdBtn'>
     <button class='createdButton'>
       <text class='iconfont icon-image'></text>

@@ -1,7 +1,4 @@
 .nav_container {
-  /* position: fixed;
-  bottom: 0;
-  left: 0; */
   border-top: 1px solid #eaeaea;
   display: flex;
   font-size: 12px;
@@ -9,7 +6,9 @@
   justify-content: center;
   background-color: #fff;
   box-shadow: 0 0 0 0 #eaeaea;
-  margin-top:95rpx;
+  margin-top:55rpx;
+  position: absolute;
+  bottom: 0;
 }
 
 .nav_item {

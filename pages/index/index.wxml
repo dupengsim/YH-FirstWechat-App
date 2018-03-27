@@ -19,7 +19,7 @@
       <swiper bindchange='swiperChange' circular="true">
         <block wx:for="{{imgUrls}}" wx:key="item.id">
           <swiper-item style="position:relative;">
-            <image src="{{item.url}}" class="slide-image" mode='widthFix' />
+            <image src="{{item.url}}" class="slide-image" />
             <view class="iconCircle" catchtap='showMeng'>
               <text class='iconfont icon-fenxiang1 ifx'></text>
             </view>
@@ -36,15 +36,15 @@
     <view class='share_alpha_Box' wx:if="{{mengShow}}" catchtap='outbtn'>
       <view class='shareBox {{aniStyle?"slideup":"slidedown"}}' catchtap='inbtn'>
         <view class='share_button'>
-          <view class='share_Friends share_item'>
+          <button class='share_Friends share_item' open-type='share'>
             <text class='iconfont icon-logo-wechat'></text>
-            <button class='share_txt stb' open-type='share'>分享给好友</button>
-          </view>
+            <text class='share_txt'>分享给好友</text> 
+          </button>
           <view class='share_line'></view>
-          <view class='save_Photo share_item' catchtap='saveImage'>
+          <button class='save_Photo share_item' catchtap='saveImage'>
             <text class='iconfont icon-xiazai'></text>
             <text class='share_txt'>保存到相册</text>
-          </view>
+          </button>
         </view>
         <view class='share_cancel' catchtap='outbtn'>
           <text>取消</text>

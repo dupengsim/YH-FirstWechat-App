@@ -1,5 +1,5 @@
 var imglist = require('../../mock/mock-data.js');
-import { onCreationTab, onArraySort, firstOrDefault } from '../../common_Js/common.js'
+import { onCreationTab, onArraySort, firstOrDefault } from '../../common_Js/common.js';
 
 Page({
 
@@ -13,7 +13,7 @@ Page({
     clientWidth: 0,//窗口可视区域的宽度
     clientHeight: 0,//窗口可视区域的高度
     imgUrl: '',//当前显示的海报url
-    isShow: false //canvas画布是否显示
+    isShow: false, //canvas画布是否显示
   },
   showMeng: function (e) {
     this.setData({
@@ -59,7 +59,16 @@ Page({
     that.setData({
       currentId: that.data.imgUrls[0].id
     });
+
+    wx.getSystemInfo({
+      success: function (res) {
+        console.log(res.brand),
+          console.log(res.model),
+          console.log(res.windowHeight)
+      },
+    })
   },
+
   swiperChange: function (event) {
     let that = this;
     var _index = event.detail.current + 1;
@@ -162,5 +171,26 @@ Page({
 
       }
     }
-  }
+  },
+  // imageLoad: function(e) {
+  //   var imgWidth = e.detail.width,
+  //   var imgheight = e.detail.height,
+  //   ratio = imgWidth / imgHeight;
+  //   console.log(imgWidth, imgHeight)
+  //   var viewHeight = 750 / ratio;
+  //   var imgheight = viewHeight
+  //   var imgheights = this.data.imgheights
+  //   imgheights.push(imgheight)
+  //   this.setData({
+  //     imgheights: imgheights,
+  //   })
+  // },
+  // bindchange: function(e) {
+  //   console.log(e.detail.current)
+  //   this.setData({
+  //     current: e.detail.current
+  //   })
+  // }
+
+
 })

@@ -11,7 +11,7 @@
 }
 
 .card_container {
-  width: 90%;
+  width: 85%;
   margin: 0 auto;
   height: 900rpx;
   margin-top: 20rpx;
