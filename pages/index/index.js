@@ -12,7 +12,7 @@ Page({
     currentId: 0, //当前显示的海报id
     clientWidth: 0,//窗口可视区域的宽度
     clientHeight: 0,//窗口可视区域的高度
-    imgUrl: '',//当前显示的海报url
+    imgUrl: '',//带有二维码的最终图片地址
     isShow: false //canvas画布是否显示
   },
   showMeng: function (e) {
@@ -73,17 +73,12 @@ Page({
     let that = this;
     // 获取当前显示的图片
     var _imgUrl = that.data.imgUrls.firstOrDefault(that.data.currentId).url;
-    var _width = 0;
-    var _height = 0;
-    wx.getSystemInfo({
-      success: function (res) {
-        _width = res.windowWidth;
-        _height = res.windowHeight + 60;
-        that.setData({
-          clientWidth: _width,
-          clientHeight: _height
-        })
-      },
+    var wh = getSystemInfo();
+    var _width = wh.clientWidth;
+    var _height = wh.clientHeight + 60;
+    that.setData({
+      clientWidth: _width,
+      clientHeight: _height
     })
     var context = wx.createCanvasContext('myCanvas');
     context.stroke();

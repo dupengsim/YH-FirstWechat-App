@@ -1,5 +1,5 @@
 var creationList = require('../../../mock/mock-data.js');
-import { firstOrDefault, buildRandom } from '../../../common_Js/common.js'
+import { firstOrDefault, buildRandom, getSystemInfo } from '../../../common_Js/common.js'
 var app = getApp();
 
 Page({
@@ -8,12 +8,14 @@ Page({
     noteMaxLen: "48",
     limitNoteLen: "48",
     imgUrl: '',
-    newImageUrl: '',
+    newImageUrl: '',// 生成海报的图片地址
     content: '',//输入的文字内容
     isshow: 1,
     clientWidth: 0,
     clientHeight: 0,
-    storageKey: 0
+    storageKey: 0,// 缓存key
+    codeImageUrl: '',//带二维码的最终图片地址
+    isHide: false //与二维码合并后临时显示的canvas是否隐藏
   },
   onLoad: function (options) {
     let that = this;
@@ -62,30 +64,24 @@ Page({
     } else {
       //生成海报
       let that = this;
-      var _width = 0;
-      var _height = 0;
-      wx.getSystemInfo({
-        success: function (res) {
-          _width = res.windowWidth;
-          _height = res.windowHeight;
-          console.log(_height);
-          that.setData({
-            clientWidth: _width,
-            clientHeight: _height
-          })
-        },
+      var wh = getSystemInfo();
+      var _width = wh.clientWidth;
+      var _height = wh.clientHeight;
+      that.setData({
+        clientWidth: _width,
+        clientHeight: _height
       })
       var _imgUrl = that.data.imgUrl;
       var _content = that.data.content;
       var arr = _content.split(/[\n,]/g);
       var context = wx.createCanvasContext('myCanvas');
       context.stroke();
-      context.drawImage(_imgUrl, 20, 20, _width - 40, _height - 150);
+      context.drawImage(_imgUrl, 10, 10, _width - 20, _height - 10);
       //填充文字
       context.setFillStyle('white');
       context.font = "bold 16px Arial";
       context.fillText('#在他人眼里，我竟然是这样的艺术生#', 40, 60);
-      var _top = 100;
+      var _top = 90;
       for (var i = 0; i < arr.length; i++) {
         that.drawText(arr[i], 40, _top, 240, context);
         _top += 40;
@@ -118,14 +114,12 @@ Page({
         isshow: 0
       });
     }
-
-
   },
   drawText: function (t, x, y, w, context) { // 设置文本自动换行
     var chr = t.split("");
     var temp = "";
     var row = [];
-    context.font = "bold 20px Arial";
+    context.font = "bold 22px Arial";
     context.fillStyle = "white";
     context.textBaseline = "middle";
     for (var a = 0; a < chr.length; a++) {
@@ -140,13 +134,59 @@ Page({
     }
     row.push(temp);
     for (var b = 0; b < row.length; b++) {
-      context.fillText(row[b], x, y + (b + 1) * 20 + 30);
+      context.fillText(row[b], x, y + (b + 1) * 20);
     }
   },
   saveImage: function () { //保存海报到相册
     let that = this;
+    var wh = getSystemInfo();
+    var _width = wh.clientWidth;
+    var _height = wh.clientHeight + 60;
+    that.setData({
+      clientWidth: _width,
+      clientHeight: _height
+    })
+    var context = wx.createCanvasContext('tempCanvas');
+    context.stroke();
+    context.setFillStyle('white');
+    context.fillRect(0, 0, _width, _height);
+    context.drawImage(that.data.newImageUrl, 10, 15, _width - 20, _height - 150);
+    // 绘制二维码
+    var codeImg = '/images/code.jpg';
+    context.drawImage(codeImg, 150, _height - 120, 80, 80);
+    // 填充文字
+    context.setFillStyle('black');
+    context.font = "normal 12px Arial";
+    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看。', 60, _height - 20);
+    //绘制图片
+    context.draw();
+    //输出最终图片的路径
+    setTimeout(() => {
+      wx.canvasToTempFilePath({
+        canvasId: 'tempCanvas',
+        success: function (res) {
+          var tempFilePath = res.tempFilePath;
+          that.setData({
+            codeImageUrl: tempFilePath
+          });
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      }, that)
+    }, 1000);
+    wx.showLoading({
+      title: '正在保存中...',
+    })
+    setTimeout(() => {
+      that.saveToAlbum();
+      wx.hideLoading();
+    }, 2000);
+  },
+  saveToAlbum: function () {
+    let that = this;
     wx.saveImageToPhotosAlbum({
-      filePath: that.data.newImageUrl,
+      filePath: that.data.codeImageUrl,
       success: function (res) {
         wx.showModal({
           title: '小提示',
@@ -154,6 +194,9 @@ Page({
           content: '图片已经保存至相册啦，快秀到朋友圈给大家看吧！',
           success: function (res) {
             if (res.confirm) {
+              that.setData({
+                isHide: true
+              })
             }
           }
         })
@@ -169,7 +212,7 @@ Page({
     let that = this;
     return {
       title: '在他人眼里，我竟然是这样的艺术生......',
-      path: '/pages/logs/logs?id=' + that.data.storageKey,//TODO:改成专属页面
+      path: '/pages/poster/poster?id=' + that.data.storageKey,
       success: function (res) {
 
       },

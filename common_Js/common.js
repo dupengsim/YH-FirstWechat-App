@@ -34,10 +34,22 @@ var buildRandom = function (n) {
   }
   return rnd;
 }
+// 获取设备窗口的宽和高
+var getSystemInfo = function () {
+  var _width = 0, _height = 0;
+  wx.getSystemInfo({
+    success: function (res) {
+      _width = res.windowWidth;
+      _height = res.windowHeight;
+    }
+  })
+  return { clientWidth: _width, clientHeight: _height };
+}
 
 module.exports = {
   onCreationTab,
   onArraySort,
   firstOrDefault,
-  buildRandom
+  buildRandom,
+  getSystemInfo
 }

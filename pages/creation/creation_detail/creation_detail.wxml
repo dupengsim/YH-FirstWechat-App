@@ -20,3 +20,6 @@
     <text class='iconfont icon-fasong'></text>
   发送给好友</button>
 </view>
+
+<!-- 保存到相册时临时合并存储 -->
+<canvas canvas-id='tempCanvas' hidden='{{isHide}}' class="canvas" style='width:{{clientWidth}}px;height:{{clientHeight}}px;background-color:#fff;'></canvas>
