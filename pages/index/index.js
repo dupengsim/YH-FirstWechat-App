@@ -4,12 +4,16 @@ import { onCreationTab, onArraySort, firstOrDefault } from '../../common_Js/comm
 Page({
 
   data: {
-    imgUrls: [],
+    imgUrls: [],//页面海报列表
     index: 1,
     isflag: true,
     mengShow: false,
     aniStyle: true,
-    currentId: 0
+    currentId: 0, //当前显示的海报id
+    clientWidth: 0,//窗口可视区域的宽度
+    clientHeight: 0,//窗口可视区域的高度
+    imgUrl: '',//当前显示的海报url
+    isShow: false //canvas画布是否显示
   },
   showMeng: function (e) {
     this.setData({
@@ -69,9 +73,59 @@ Page({
     let that = this;
     // 获取当前显示的图片
     var _imgUrl = that.data.imgUrls.firstOrDefault(that.data.currentId).url;
-    // TODO:在图片底部加上“艺路帮”公众号二维码，并加上一行文字，然后合并保存
+    var _width = 0;
+    var _height = 0;
+    wx.getSystemInfo({
+      success: function (res) {
+        _width = res.windowWidth;
+        _height = res.windowHeight + 60;
+        that.setData({
+          clientWidth: _width,
+          clientHeight: _height
+        })
+      },
+    })
+    var context = wx.createCanvasContext('myCanvas');
+    context.stroke();
+    context.setFillStyle('white');
+    context.fillRect(0, 0, _width, _height);
+    context.drawImage(_imgUrl, 10, 15, _width - 20, _height - 150);
+    // 绘制二维码
+    var codeImg = '/images/code.jpg';
+    context.drawImage(codeImg, 150, _height - 120, 80, 80);
+    // 填充文字
+    context.setFillStyle('black');
+    context.font = "normal 12px Arial";
+    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看。', 60, _height - 20);
+    //绘制图片
+    context.draw();
+    //输出最终图片的路径
+    setTimeout(() => {
+      wx.canvasToTempFilePath({
+        canvasId: 'myCanvas',
+        success: function (res) {
+          var tempFilePath = res.tempFilePath;
+          that.setData({
+            imgUrl: tempFilePath
+          });
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      }, that)
+    }, 1000);
+    wx.showLoading({
+      title: '正在保存中...',
+    })
+    setTimeout(() => {
+      that.savePhoto();
+      wx.hideLoading();
+    }, 2000);
+  },
+  savePhoto: function () {
+    let that = this;
     wx.saveImageToPhotosAlbum({
-      filePath: _imgUrl,
+      filePath: that.data.imgUrl,
       success: function (res) {
         wx.showModal({
           title: '小提示',
@@ -81,7 +135,8 @@ Page({
             if (res.confirm) {
               that.setData({
                 mengShow: false,
-                aniStyle: false
+                aniStyle: false,
+                isShow: true
               });
             }
           }
