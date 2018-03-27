@@ -15,7 +15,8 @@ Page({
     clientHeight: 0,
     storageKey: 0,// 缓存key
     codeImageUrl: '',//带二维码的最终图片地址
-    isHide: false //与二维码合并后临时显示的canvas是否隐藏
+    isHide: false, //与二维码合并后临时显示的canvas是否隐藏
+    conuter: 0 // 设置输入内容自动换行时，记录换行的次数
   },
   onLoad: function (options) {
     let that = this;
@@ -84,7 +85,7 @@ Page({
       var _top = 90;
       for (var i = 0; i < arr.length; i++) {
         that.drawText(arr[i], 40, _top, 240, context);
-        _top += 40;
+        _top = _top + 35 * parseInt(that.data.counter);
       }
       //绘制图片
       context.draw();
@@ -116,6 +117,7 @@ Page({
     }
   },
   drawText: function (t, x, y, w, context) { // 设置文本自动换行
+    let that = this;
     var chr = t.split("");
     var temp = "";
     var row = [];
@@ -133,9 +135,14 @@ Page({
       temp += chr[a];
     }
     row.push(temp);
-    for (var b = 0; b < row.length; b++) {
-      context.fillText(row[b], x, y + (b + 1) * 20);
+    var n = 0;
+    for (var i = 0; i < row.length; i++) {
+      context.fillText(row[i], x, y + (i + 1) * 35, w);
+      n++;
     }
+    that.setData({
+      counter: n
+    });
   },
   saveImage: function () { //保存海报到相册
     let that = this;
