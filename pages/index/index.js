@@ -14,6 +14,8 @@ Page({
     clientHeight: 0,//窗口可视区域的高度
     imgUrl: '',//当前显示的海报url
     isShow: false, //canvas画布是否显示
+    imgUrl: '',//带有二维码的最终图片地址
+    isShow: false //canvas画布是否显示
   },
   showMeng: function (e) {
     this.setData({
@@ -82,17 +84,12 @@ Page({
     let that = this;
     // 获取当前显示的图片
     var _imgUrl = that.data.imgUrls.firstOrDefault(that.data.currentId).url;
-    var _width = 0;
-    var _height = 0;
-    wx.getSystemInfo({
-      success: function (res) {
-        _width = res.windowWidth;
-        _height = res.windowHeight + 60;
-        that.setData({
-          clientWidth: _width,
-          clientHeight: _height
-        })
-      },
+    var wh = getSystemInfo();
+    var _width = wh.clientWidth;
+    var _height = wh.clientHeight + 60;
+    that.setData({
+      clientWidth: _width,
+      clientHeight: _height
     })
     var context = wx.createCanvasContext('myCanvas');
     context.stroke();
@@ -171,26 +168,7 @@ Page({
 
       }
     }
-  },
-  // imageLoad: function(e) {
-  //   var imgWidth = e.detail.width,
-  //   var imgheight = e.detail.height,
-  //   ratio = imgWidth / imgHeight;
-  //   console.log(imgWidth, imgHeight)
-  //   var viewHeight = 750 / ratio;
-  //   var imgheight = viewHeight
-  //   var imgheights = this.data.imgheights
-  //   imgheights.push(imgheight)
-  //   this.setData({
-  //     imgheights: imgheights,
-  //   })
-  // },
-  // bindchange: function(e) {
-  //   console.log(e.detail.current)
-  //   this.setData({
-  //     current: e.detail.current
-  //   })
-  // }
+  }
 
 
 })
