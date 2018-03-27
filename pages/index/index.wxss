@@ -2,9 +2,10 @@
 @import "../../icon/icon.wxss";
 @import "nav_template/nav_template.wxss";
 
-.container{
+.container {
   position: static;
 }
+
 .conversation_Btn {
   float: right;
   position: absolute;
@@ -160,9 +161,9 @@ swiper image {
   }
 }
 
-.containerMain{
+.containerMain {
   position: absolute;
   bottom: 0;
   left: 0;
-  width:100%;
+  width: 100%;
 }
