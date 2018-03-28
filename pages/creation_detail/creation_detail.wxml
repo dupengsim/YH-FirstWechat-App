@@ -6,8 +6,9 @@
   <text class='creation_Title'>#在他人眼里，我竟然是这样的艺术生#</text>
   <textarea class='inputTxt' placeholder='请输入文字……' placeholder-class="input-placeholder" maxlength='{{noteMaxLen}}' bindinput='bindWordimit' bindblur='textAreaBlur'></textarea>
   <view class='createBtn' catchtap='createPoster'>
-    <text class='iconfont icon-beizhu'></text>
-    <text>生成海报</text>
+    <!-- <text class='iconfont icon-beizhu'></text>
+    <text>生成海报</text> -->
+    <image src='/images/icon/createImg.png'></image>
   </view>
 </view>
 
@@ -17,10 +18,10 @@
     <canvas wx:if="{{isshow==0}}" canvas-id='myCanvas' class="canvas"></canvas>
     <view wx:if="{{isshow==0}}" class="imgBtns">
       <button class='canvasBtn' catchtap='saveImage'>
-        <text class='iconfont icon-image'></text> 保存到相册
+        <image src='/images/icon/saveAlbum.png'></image>
       </button>
       <button class='share canvasBtn' id="shareBtn" open-type="share">
-        <text class='iconfont icon-fasong'></text> 发送给好友
+        <image src='/images/icon/sendFriend.png'></image>
       </button>
     </view>
   </view>

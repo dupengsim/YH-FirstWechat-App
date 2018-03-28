@@ -5,6 +5,9 @@ page {
   overflow: hidden;
   position: absolute;
 }
+button::after{
+  border: none;
+}
 
 .txt {
   font-size: 20rpx;
@@ -54,20 +57,14 @@ page {
 }
 
 .createBtn {
-  width: 220rpx;
-  height: 60rpx;
-  text-align: center;
-  line-height: 60rpx;
-  background-color: #01abe9;
-  color: #fff;
+  width:259rpx;
+  height:89rpx;
   margin: 30rpx auto 0;
-  font-size: 26rpx;
-  border-radius: 50rpx;
-  font-weight: 600;
 }
 
-.createBtn .icon-beizhu {
-  margin-right: 6rpx;
+.createBtn image {
+  width:259rpx;
+  height:89rpx;
 }
 
 .canvas {
@@ -86,14 +83,14 @@ page {
 }
 
 .canvasBtn {
-  border: none;
-  background-color: #01abe9;
-  color: #fff;
-  font-weight: 600;
-  line-height: 40rpx;
-  font-size: 12px;
-  padding-top: 10rpx;
-  padding-bottom: 10rpx;
+ width:259rpx;
+ height:89rpx;
   float: left;
-  margin-left: 50rpx;
+  background: none;
+  padding-left: 0;
+  margin-right:30rpx;
+}
+.canvasBtn image{
+  width:259rpx;
+  height:89rpx;
 }

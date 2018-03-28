@@ -15,7 +15,7 @@
       <text>为专业正名</text>
     </button>
     <view class='creation nav_item' catchtap='onCreationTab'>
-      <image class='createBtn_img' src='/images/icon/createBtn.png' style='width:100rpx;height:100rpx;display:block;'></image>
+      <image class='createBtn_img' src='/images/icon/createBtn.png'></image>
       <text class='create_txt'>我要吐槽</text>
     </view>
     <button open-type='share' class='share nav_item'>
