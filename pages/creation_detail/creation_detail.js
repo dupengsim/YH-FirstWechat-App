@@ -68,7 +68,6 @@ Page({
       var wh = getSystemInfo();
       var _width = wh.clientWidth;
       var _height = wh.clientHeight;
-      console.log(_height);
       that.setData({
         clientWidth: _width,
         clientHeight: _height
@@ -78,7 +77,7 @@ Page({
       var arr = _content.split(/[\n,]/g);
       var context = wx.createCanvasContext('myCanvas');
       context.stroke();
-      context.drawImage(_imgUrl, 0, 10, _width - 60, _height - 120, );
+      context.drawImage(_imgUrl, 0, 10, _width - 60, _height - 120);
       //填充文字
       context.setFillStyle('white');
       context.font = "bold 16px Arial";
@@ -199,7 +198,7 @@ Page({
         wx.showModal({
           title: '小提示',
           showCancel: false,
-          content: '已经保存至相册啦，快去分享给你的票友吧！',
+          content: '已保存至相册，快去分享给你的票友吧！',
           success: function (res) {
             if (res.confirm) {
               that.setData({

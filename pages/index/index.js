@@ -132,7 +132,7 @@ Page({
         wx.showModal({
           title: '小提示',
           showCancel: false,
-          content: '图片已经保存至相册啦，快秀到朋友圈给大家看吧！',
+          content: '已保存到相册，快去分享给你的票友吧！',
           success: function (res) {
             if (res.confirm) {
               that.setData({

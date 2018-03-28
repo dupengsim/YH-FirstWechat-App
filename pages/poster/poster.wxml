@@ -15,7 +15,7 @@
     <image class='imm' src='{{imgUrl}}'></image>
      <button class='imgMain_Btn' catchtap='buildme'>
         <text class='iconfont icon-beizhu'></text>
-        制作我的海报
+        我也要吐槽
     </button> 
   </view>
 </view>
