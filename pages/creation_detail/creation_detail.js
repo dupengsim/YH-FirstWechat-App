@@ -68,6 +68,7 @@ Page({
       var wh = getSystemInfo();
       var _width = wh.clientWidth;
       var _height = wh.clientHeight;
+      console.log(_height);
       that.setData({
         clientWidth: _width,
         clientHeight: _height
@@ -77,11 +78,11 @@ Page({
       var arr = _content.split(/[\n,]/g);
       var context = wx.createCanvasContext('myCanvas');
       context.stroke();
-      context.drawImage(_imgUrl, 0, 10, _width, _height);
+      context.drawImage(_imgUrl, 0, 10, _width-60, _height-120,);
       //填充文字
       context.setFillStyle('white');
       context.font = "bold 16px Arial";
-      context.fillText('#在他人眼里，我竟然是这样的艺术生#', 40, 60);
+      context.fillText('#在他人眼里，我竟然是这样的艺术生#', 20, 60);
       var _top = 90;
       for (var i = 0; i < arr.length; i++) {
         that.drawText(arr[i], 40, _top, 240, context);
@@ -164,7 +165,7 @@ Page({
     // 填充文字
     context.setFillStyle('black');
     context.font = "normal 12px Arial";
-    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看。', 60, _height - 20);
+    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', 60, _height - 20);
     //绘制图片
     context.draw();
     //输出最终图片的路径
