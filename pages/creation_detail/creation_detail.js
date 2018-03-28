@@ -15,7 +15,7 @@ Page({
     clientHeight: 0,
     storageKey: 0,// 缓存key
     codeImageUrl: '',//带二维码的最终图片地址
-    isHide: true, //与二维码合并后临时显示的canvas是否隐藏
+    isHide: false, //与二维码合并后临时显示的canvas是否隐藏
     conuter: 0 // 设置输入内容自动换行时，记录换行的次数
   },
   onLoad: function (options) {
@@ -77,7 +77,7 @@ Page({
       var arr = _content.split(/[\n,]/g);
       var context = wx.createCanvasContext('myCanvas');
       context.stroke();
-      context.drawImage(_imgUrl, 10, 10, _width - 20, _height - 10);
+      context.drawImage(_imgUrl, 0, 10, _width, _height);
       //填充文字
       context.setFillStyle('white');
       context.font = "bold 16px Arial";
