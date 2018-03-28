@@ -1,5 +1,5 @@
-var creationList = require('../../../mock/mock-data.js');
-import { firstOrDefault, buildRandom, getSystemInfo } from '../../../common_Js/common.js'
+var creationList = require('../../mock/mock-data.js');
+import { firstOrDefault, buildRandom, getSystemInfo } from '../../common_Js/common.js'
 var app = getApp();
 
 Page({
@@ -15,7 +15,7 @@ Page({
     clientHeight: 0,
     storageKey: 0,// 缓存key
     codeImageUrl: '',//带二维码的最终图片地址
-    isHide: false, //与二维码合并后临时显示的canvas是否隐藏
+    isHide: true, //与二维码合并后临时显示的canvas是否隐藏
     conuter: 0 // 设置输入内容自动换行时，记录换行的次数
   },
   onLoad: function (options) {

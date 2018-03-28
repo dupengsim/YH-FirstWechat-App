@@ -1,0 +1,31 @@
+<view wx:if="{{isshow==1}}" class='container'>
+  <text class='txt'>还可以输入{{limitNoteLen}}个字</text>
+  <view class='card_container'>
+    <image src='{{imgUrl}}'></image>
+  </view>
+  <text class='creation_Title'>#在他人眼里，我竟然是这样的艺术生#</text>
+  <textarea class='inputTxt' placeholder='请输入文字……' placeholder-class="input-placeholder" maxlength='{{noteMaxLen}}' bindinput='bindWordimit' bindblur='textAreaBlur'></textarea>
+  <view class='createBtn' catchtap='createPoster'>
+    <text class='iconfont icon-beizhu'></text>
+    <text>生成海报</text>
+  </view>
+</view>
+
+<view>
+
+  <view style='overflow:hidden;'>
+    <canvas wx:if="{{isshow==0}}" canvas-id='myCanvas' class="canvas"></canvas>
+    <view wx:if="{{isshow==0}}" class="imgBtns">
+      <button class='canvasBtn' catchtap='saveImage'>
+        <text class='iconfont icon-image'></text> 保存到相册
+      </button>
+      <button class='share canvasBtn' id="shareBtn" open-type="share">
+        <text class='iconfont icon-fasong'></text> 发送给好友
+      </button>
+    </view>
+  </view>
+
+
+  <!-- 保存到相册时临时合并存储 -->
+  <canvas canvas-id='tempCanvas' hidden='{{isHide}}' style='width:{{clientWidth}}px;height:{{clientHeight}}px;background-color:#fff;'></canvas>
+</view>

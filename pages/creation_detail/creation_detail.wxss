@@ -1,4 +1,10 @@
-@import "../../../icon/icon.wxss";
+@import "../../icon/icon.wxss";
+
+page{
+  height: 100%;
+  overflow: hidden;
+  position: absolute;
+}
 
 .txt {
   font-size: 20rpx;
@@ -29,7 +35,7 @@
   left: 77rpx;
   color: #fff;
   font-size: 60rpx;
-  height:550rpx;
+  height: 550rpx;
 }
 
 .input-placeholder {
@@ -37,10 +43,10 @@
   font-size: 50rpx;
 }
 
-.creation_Title{
+.creation_Title {
   position: absolute;
-  top:133rpx;
-  left:74rpx;
+  top: 133rpx;
+  left: 74rpx;
   color: #fff;
   font-size: 32rpx;
   font-weight: 600;
@@ -60,32 +66,34 @@
   font-weight: 600;
 }
 
-
 .createBtn .icon-beizhu {
   margin-right: 6rpx;
 }
 
 .canvas {
   /* border: 1px solid #ccc; */
-   width: 100%;
+  width: 85%;
   height: 900rpx;
-  word-break: break-all; 
+  word-break: break-all;
   overflow: hidden;
+  margin-left: 7.5%;
 }
-.imgBtns{
+
+.imgBtns {
   /* display: flex; */
-  margin-top:40rpx;
+  margin-top: 40rpx;
   margin-left: 100rpx;
 }
-.canvasBtn{
+
+.canvasBtn {
   border: none;
-  background-color: #01abe9; 
+  background-color: #01abe9;
   color: #fff;
   font-weight: 600;
   line-height: 40rpx;
   font-size: 12px;
-  padding-top:10rpx;
-  padding-bottom:10rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
   float: left;
   margin-left: 50rpx;
 }

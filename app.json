@@ -2,7 +2,7 @@
   "pages":[
     "pages/index/index",
     "pages/creation/creation",
-    "pages/creation/creation_detail/creation_detail",
+    "pages/creation_detail/creation_detail",
     "pages/logs/logs",
     "pages/poster/poster",
     "pages/createdImg/createdImg",

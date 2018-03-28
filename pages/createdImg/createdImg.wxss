@@ -1,24 +1,31 @@
 @import "../../icon/icon.wxss";
 
-.createdImg{
-  width:93%;
-  margin:50rpx auto;
-  height:900rpx;
+.container {
+  height: 100%;
+  overflow: hidden;
+}
+
+.createdImg {
+  width: 93%;
+  margin: 50rpx auto;
+  height: 900rpx;
   display: block;
 }
-.createdBtn{
-   margin-top:40rpx;
+
+.createdBtn {
+  margin-top: 40rpx;
   margin-left: 100rpx;
 }
-.createdButton{
+
+.createdButton {
   border: none;
-  background-color: #01abe9; 
+  background-color: #01abe9;
   color: #fff;
   font-weight: 600;
   line-height: 40rpx;
   font-size: 12px;
-  padding-top:10rpx;
-  padding-bottom:10rpx;
+  padding-top: 10rpx;
+  padding-bottom: 10rpx;
   float: left;
   margin-left: 50rpx;
 }
