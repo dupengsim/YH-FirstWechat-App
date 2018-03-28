@@ -5,8 +5,8 @@ var app = getApp();
 Page({
 
   data: {
-    noteMaxLen: "48",
-    limitNoteLen: "48",
+    noteMaxLen: 48,
+    limitNoteLen: 48,
     imgUrl: '',
     newImageUrl: '',// 生成海报的图片地址
     content: '',//输入的文字内容
@@ -99,7 +99,6 @@ Page({
             var rnd = parseInt(buildRandom(5));//缓存KEY
             var cacheValue = [{ "id": that.data.storageKey, "url": tempFilePath }];//缓存value
             wx.setStorageSync("" + rnd + "", cacheValue);//同步缓存
-
             that.setData({
               newImageUrl: tempFilePath,
               storageKey: rnd
@@ -110,7 +109,6 @@ Page({
           }
         }, that)
       }, 1000)
-
       that.setData({
         isshow: 0
       });
@@ -218,7 +216,7 @@ Page({
   onShareAppMessage: function (ops) {
     let that = this;
     return {
-      title: '在他人眼里，我竟然是这样的艺术生......',
+      title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
       path: '/pages/poster/poster?id=' + that.data.storageKey,
       success: function (res) {
 
