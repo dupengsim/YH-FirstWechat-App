@@ -1,5 +1,5 @@
 var imglist = require('../../mock/mock-data.js');
-import { onCreationTab, onArraySort, firstOrDefault } from '../../common_Js/common.js';
+import { onCreationTab, onArraySort, firstOrDefault, getSystemInfo } from '../../common_Js/common.js';
 
 Page({
 
@@ -61,14 +61,6 @@ Page({
     that.setData({
       currentId: that.data.imgUrls[0].id
     });
-
-    wx.getSystemInfo({
-      success: function (res) {
-        console.log(res.brand),
-          console.log(res.model),
-          console.log(res.windowHeight)
-      },
-    })
   },
 
   swiperChange: function (event) {
@@ -102,7 +94,7 @@ Page({
     // 填充文字
     context.setFillStyle('black');
     context.font = "normal 12px Arial";
-    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看。', 60, _height - 20);
+    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', 60, _height - 20);
     //绘制图片
     context.draw();
     //输出最终图片的路径
@@ -116,7 +108,11 @@ Page({
           });
         },
         fail: function (res) {
-          console.log(res);
+          that.setData({
+            mengShow: false,
+            aniStyle: false,
+            isShow: true
+          });
         }
       }, that)
     }, 1000);
@@ -169,6 +165,4 @@ Page({
       }
     }
   }
-
-
 })
