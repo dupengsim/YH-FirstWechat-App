@@ -15,7 +15,7 @@ Page({
     clientHeight: 0,
     storageKey: 0,// 缓存key
     codeImageUrl: '',//带二维码的最终图片地址
-    isHide: true, //与二维码合并后临时显示的canvas是否隐藏
+    isHide: false, //与二维码合并后临时显示的canvas是否隐藏
     conuter: 0 // 设置输入内容自动换行时，记录换行的次数
   },
   onLoad: function (options) {
@@ -68,6 +68,7 @@ Page({
       var wh = getSystemInfo();
       var _width = wh.clientWidth;
       var _height = wh.clientHeight;
+      console.log(_height);
       that.setData({
         clientWidth: _width,
         clientHeight: _height
@@ -77,14 +78,14 @@ Page({
       var arr = _content.split(/[\n,]/g);
       var context = wx.createCanvasContext('myCanvas');
       context.stroke();
-      context.drawImage(_imgUrl, 10, 10, _width - 20, _height - 10);
+      context.drawImage(_imgUrl, 0, 10, _width - 60, _height - 120, );
       //填充文字
       context.setFillStyle('white');
       context.font = "bold 16px Arial";
-      context.fillText('#在他人眼里，我竟然是这样的艺术生#', 40, 60);
+      context.fillText('#在他人眼里，我竟然是这样的艺术生#', 20, 60);
       var _top = 90;
       for (var i = 0; i < arr.length; i++) {
-        that.drawText(arr[i], 40, _top, 240, context);
+        that.drawText(arr[i], 20, _top, 260, context);
         _top = _top + 35 * parseInt(that.data.counter);
       }
       //绘制图片
@@ -121,7 +122,7 @@ Page({
     var chr = t.split("");
     var temp = "";
     var row = [];
-    context.font = "bold 22px Arial";
+    context.font = "bold 24px Arial";
     context.fillStyle = "white";
     context.textBaseline = "middle";
     for (var a = 0; a < chr.length; a++) {
@@ -164,7 +165,7 @@ Page({
     // 填充文字
     context.setFillStyle('black');
     context.font = "normal 12px Arial";
-    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看。', 60, _height - 20);
+    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', 60, _height - 20);
     //绘制图片
     context.draw();
     //输出最终图片的路径
@@ -198,7 +199,7 @@ Page({
         wx.showModal({
           title: '小提示',
           showCancel: false,
-          content: '图片已经保存至相册啦，快秀到朋友圈给大家看吧！',
+          content: '已经保存至相册啦，快去分享给你的票友吧！',
           success: function (res) {
             if (res.confirm) {
               that.setData({
