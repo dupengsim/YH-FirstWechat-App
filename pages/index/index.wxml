@@ -34,9 +34,9 @@
     <template is="navigation"></template>
     <!-- 分享 -->
     <view class='share_alpha_Box' wx:if="{{mengShow}}" catchtap='outbtn'>
-      <view class='shareBox {{aniStyle?"slideup":"slidedown"}}' catchtap='inbtn'>
+      <view class='shareBox {{aniStyle?"slideup":"slidedown"}}'>
         <view class='share_button'>
-          <button class='share_Friends share_item' open-type='share'>
+          <button class='share_Friends share_item' open-type='share' catchtap='onShareTab'>
             <text class='iconfont icon-logo-wechat'></text>
             <text class='share_txt'>分享给好友</text> 
           </button>
@@ -54,4 +54,4 @@
   </view>
 </view>
 <!-- 保存到相册时临时合并存储 -->
-<canvas canvas-id='myCanvas' hidden='{{isShow}}' class="canvas" style='width:{{clientWidth}}px;height:{{clientHeight}}px;background-color:#fff;'></canvas>
+<canvas canvas-id='myCanvas' hidden='{{isShow}}' class="canvas" style='width:{{clientWidth}}px;height:{{clientHeight}}px;background-color:#fff;position:absolute;top:-{{clientHeight}}px;left:-{{clientWidth}}px;'></canvas>

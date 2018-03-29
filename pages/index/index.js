@@ -29,9 +29,6 @@ Page({
       aniStyle: false
     });
   },
-  inbtn: function (e) {
-    console.log("in")
-  },
   onLoad: function (options) {
     let that = this;
     var sharedlist = [];//被分享的那张海报信息
@@ -63,6 +60,11 @@ Page({
     });
   },
 
+  onShareTab: function () {
+    this.setData({
+      mengShow: false
+    })
+  },
   swiperChange: function (event) {
     let that = this;
     var _index = event.detail.current + 1;
@@ -149,16 +151,17 @@ Page({
   onCreationTab: function () {
     onCreationTab();
   },
-  onShareTab: function () {
-    onShareTab();
-  },
   onShareAppMessage: function (ops) {//自定义分享信息
-    var _currentId = this.data.currentId
+    var _currentId = this.data.currentId;
+    var that = this;
     return {
       title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
       path: '/pages/index/index?id=' + _currentId,
       success: function (res) {
-
+        that.setData({
+          mengShow: false,
+          aniStyle: false
+        });
       },
       fail: function (res) {
 

@@ -6,15 +6,17 @@
   <text class='creation_Title'>#在他人眼里，我竟然是这样的艺术生#</text>
   <textarea class='inputTxt' placeholder='请输入文字……' placeholder-class="input-placeholder" maxlength='{{noteMaxLen}}' bindinput='bindWordimit' bindblur='textAreaBlur'></textarea>
   <view class='createBtn' catchtap='createPoster'>
-    <!-- <text class='iconfont icon-beizhu'></text>
-    <text>生成海报</text> -->
     <image src='/images/icon/createImg.png'></image>
   </view>
 </view>
 
 <view>
 
-  <view style='overflow:hidden;'>
+  <!-- 保存到相册时临时合并存储 -->
+    <canvas canvas-id='tempCanvas' hidden='{{isHide}}' style='width:{{clientWidth}}px;height:{{clientHeight}}px;background-color:#fff;opacity:0;position:absolute;left:-{{clientWidth}}px;top:-{{clientHeight}}px'></canvas>
+
+
+  <view style='overflow:hidden;height:{{clientHeight}};z-index:999;'>
     <canvas wx:if="{{isshow==0}}" canvas-id='myCanvas' class="canvas"></canvas>
     <view wx:if="{{isshow==0}}" class="imgBtns">
       <button class='canvasBtn' catchtap='saveImage'>
@@ -27,6 +29,5 @@
   </view>
 
 
-  <!-- 保存到相册时临时合并存储 -->
-  <canvas canvas-id='tempCanvas' hidden='{{isHide}}' style='width:{{clientWidth}}px;height:{{clientHeight}}px;background-color:#fff;opacity:0;'></canvas>
+
 </view>
