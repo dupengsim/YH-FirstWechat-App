@@ -12,10 +12,8 @@ Page({
     currentId: 0, //当前显示的海报id
     clientWidth: 0,//窗口可视区域的宽度
     clientHeight: 0,//窗口可视区域的高度
-    imgUrl: '',//当前显示的海报url
+    imgUrl: '',//合并后带有二维码的待保存图片地址
     isShow: false, //canvas画布是否显示
-    imgUrl: '',//带有二维码的最终图片地址
-    isShow: false //canvas画布是否显示
   },
   showMeng: function (e) {
     this.setData({
@@ -28,6 +26,12 @@ Page({
       mengShow: false,
       aniStyle: false
     });
+  },
+  onShareTab: function () {
+    this.setData({
+      mengShow: false,
+      aniStyle: false
+    })
   },
   onLoad: function (options) {
     let that = this;
@@ -58,12 +62,6 @@ Page({
     that.setData({
       currentId: that.data.imgUrls[0].id
     });
-  },
-
-  onShareTab: function () {
-    this.setData({
-      mengShow: false
-    })
   },
   swiperChange: function (event) {
     let that = this;
@@ -154,6 +152,9 @@ Page({
   onShareAppMessage: function (ops) {//自定义分享信息
     var _currentId = this.data.currentId;
     var that = this;
+    that.setData({
+      mengShow: false
+    });
     return {
       title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
       path: '/pages/index/index?id=' + _currentId,

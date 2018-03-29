@@ -31,7 +31,7 @@ Page({
         var tempFilePaths = res.tempFilePaths;
         app.globalData.chooseImgUrl = tempFilePaths;
         wx.navigateTo({
-          url: '/pages/creation/creation_detail/creation_detail',
+          url: '/pages/creation_detail/creation_detail',
         })
       },
     })
