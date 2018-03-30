@@ -73,6 +73,7 @@ Page({
         clientHeight: _height
       })
       var _imgUrl = that.data.imgUrl;
+
       var _content = that.data.content;
       var arr = _content.split(/[\n,]/g);
       var context = wx.createCanvasContext('myCanvas');
@@ -99,6 +100,7 @@ Page({
             var rnd = parseInt(buildRandom(5));//缓存KEY
             var cacheValue = [{ "id": that.data.storageKey, "url": tempFilePath }];//缓存value
             wx.setStorageSync("" + rnd + "", cacheValue);//同步缓存
+
             that.setData({
               newImageUrl: tempFilePath,
               storageKey: rnd
