@@ -13,6 +13,7 @@
 <view>
 
   <!-- 保存到相册时临时合并存储 -->
+  
     <canvas canvas-id='tempCanvas' hidden='{{isHide}}' style='width:{{clientWidth}}px;height:{{clientHeight}}px;background-color:#fff;opacity:0;position:absolute;left:-{{clientWidth}}px;top:-{{clientHeight}}px'></canvas>
 
 
