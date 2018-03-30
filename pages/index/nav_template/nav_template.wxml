@@ -11,16 +11,16 @@
   </view>
   <view class='nav_container'>
     <button class='public nav_item'>
-      <text class='iconfont icon-xiaoxi icons_item'></text>
-      <text>为专业正名</text>
+      <image class='public_img' src='/images/icon/conversation.png'></image>
+      <text class='nav_item_txt'>为专业正名</text>
     </button>
     <view class='creation nav_item' catchtap='onCreationTab'>
       <image class='createBtn_img' src='/images/icon/createBtn.png'></image>
       <text class='create_txt'>我要吐槽</text>
     </view>
     <button open-type='share' class='share nav_item'>
-      <text class='iconfont icon-woyaoyaoqingicon icons_item'></text>
-      <text>邀请好友吐槽</text>
+      <image class='share_img' src='/images/icon/invite.jpg'></image>
+      <text class='nav_item_txt share_item_txt'>邀请好友吐槽</text>
     </button>
   </view>
 </template>
