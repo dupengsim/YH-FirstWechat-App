@@ -1,3 +1,6 @@
+button::after{
+  border: none;
+}
 .nav_container {
   border-top: 1px solid #eaeaea;
   display: flex;
@@ -14,33 +17,23 @@
 .nav_item {
   width: 33.3%;
   text-align: center;
+  padding: 60rpx 0;
+  font-size:12px;
 }
 
 .icons_item {
   display: block;
   line-height: 12px;
-  font-size: 44rpx;
+  font-size: 12px;
   color: #01abe9;
   margin-top: 20rpx;
 }
 
-.icon-xiaoxi {
-  color: #000;
-}
 
-.icon-woyaoyaoqingicon {
-  color: #000;
-}
 
 .creation {
   position: relative;
   top: -42rpx;
-}
-
-.big_Iconfont {
-  font-size: 100rpx;
-  padding-bottom: 41rpx;
-  line-height: 27rpx;
 }
 
 .invite_Btn {
@@ -68,16 +61,39 @@ button::after {
 }
 
 .share{
-  font-size:12px;
   background-color: #fff;
+  position: relative;
+}
+.share_img{
+  width:35rpx;
+  height:41rpx;
+  position: absolute;
+  left: 110rpx;
+  top:19rpx;
+
 }
 .public{
-  font-size:12px;
   background-color:#fff;
+  position: relative;
+}
+.public_img{
+  width:37rpx;
+  height:44rpx;
+  position: absolute;
+  left: 108rpx;
+  top:19rpx;
+}
+.nav_item_txt{
+  position: absolute;
+  left: 64rpx;
+  top:53rpx;
+}
+.share_item_txt{
+  left:52rpx;
 }
 .createBtn_img{
-  width:109rpx;
-  height:121rpx;
+  width:114rpx;
+  height:114rpx;
   display: block;
   position: absolute;
   left: 74rpx;

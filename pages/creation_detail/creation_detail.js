@@ -81,7 +81,7 @@ Page({
       context.drawImage(_imgUrl, 0, 10, _width - 50, _height - 120);
       //填充文字
       context.setFillStyle('white');
-      context.font = "bold 14px Arial";
+      context.font = "bold 34rpx Arial";
       context.fillText('#在他人眼里，我竟然是这样的艺术生#', 20, 60);
       var _top = 90;
       for (var i = 0; i < arr.length; i++) {
@@ -160,7 +160,7 @@ Page({
     context.drawImage(that.data.newImageUrl, 10, 15, _width - 20, _height - 150);
     // 绘制二维码
     var codeImg = '/images/code.jpg';
-    context.drawImage(codeImg, 150, _height - 120, 80, 80);
+    context.drawImage(codeImg, 145, _height - 120, 80, 80);
     // 填充文字
     context.setFillStyle('black');
     context.font = "normal 12px Arial";
