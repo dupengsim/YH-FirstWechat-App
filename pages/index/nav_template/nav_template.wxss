@@ -29,13 +29,7 @@ button::after{
   margin-top: 20rpx;
 }
 
-.icon-xiaoxi {
-  color: #000;
-}
 
-.icon-woyaoyaoqingicon {
-  color: #000;
-}
 
 .creation {
   position: relative;
@@ -98,8 +92,8 @@ button::after {
   left:52rpx;
 }
 .createBtn_img{
-  width:109rpx;
-  height:121rpx;
+  width:114rpx;
+  height:114rpx;
   display: block;
   position: absolute;
   left: 74rpx;
