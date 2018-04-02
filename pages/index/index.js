@@ -1,6 +1,7 @@
 var imglist = require('../../mock/mock-data.js');
 import { onCreationTab, onArraySort, firstOrDefault, getSystemInfo } from '../../common_Js/common.js';
 
+
 Page({
 
   data: {

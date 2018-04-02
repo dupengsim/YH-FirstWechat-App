@@ -14,7 +14,7 @@ button::after{
   float: right;
   position: absolute;
   right: 0;
-  top: 20rpx;
+  top: 24rpx;
   box-shadow: 2rpx 3rpx 2rpx 1rpx #999;
   border-top-left-radius: 50rpx;
   border-bottom-left-radius: 50rpx;
@@ -37,10 +37,10 @@ swiper {
 }
 
 swiper image {
-  width: 629rpx;
+  width: 630rpx;
   height: 100%;
   border-radius: 10rpx;
-  margin-left:7.5%;
+  margin-left:60rpx;
 }
 
 .iconCircle {

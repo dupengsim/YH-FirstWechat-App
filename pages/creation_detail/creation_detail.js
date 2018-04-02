@@ -1,5 +1,5 @@
 var creationList = require('../../mock/mock-data.js');
-import { firstOrDefault, buildRandom, getSystemInfo } from '../../common_Js/common.js'
+import { firstOrDefault, buildRandom, getSystemInfo } from '../../common_Js/common.js';
 var app = getApp();
 
 Page({
@@ -228,4 +228,5 @@ Page({
       }
     }
   }
+  
 })
