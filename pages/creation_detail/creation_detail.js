@@ -1,5 +1,7 @@
 var creationList = require('../../mock/mock-data.js');
 import { firstOrDefault, buildRandom, getSystemInfo } from '../../common_Js/common.js'
+import { BASE_URL } from '../../common_Js/constant.js'
+
 var app = getApp();
 
 Page({
@@ -13,10 +15,10 @@ Page({
     isshow: 1,
     clientWidth: 0,
     clientHeight: 0,
-    storageKey: 0,// 缓存key
     codeImageUrl: '',//带二维码的最终图片地址
     isHide: false, //与二维码合并后临时显示的canvas是否隐藏
-    conuter: 0 // 设置输入内容自动换行时，记录换行的次数
+    conuter: 0, // 设置输入内容自动换行时，记录换行的次数
+    saveImageId: 0// 保存到服务器上的图片编号
   },
   onLoad: function (options) {
     let that = this;
@@ -96,14 +98,20 @@ Page({
           canvasId: 'myCanvas',
           success: function (res) {
             var tempFilePath = res.tempFilePath;
-            // 将生成的海报信息保存到本地缓存中，以便下次用户查看
-            var rnd = parseInt(buildRandom(5));//缓存KEY
-            var cacheValue = [{ "id": that.data.storageKey, "url": tempFilePath }];//缓存value
-            wx.setStorageSync("" + rnd + "", cacheValue);//同步缓存
-
+            // 保存图片到百度云服务器
+            wx.uploadFile({
+              url: BASE_URL + '/course/uploadfile',
+              filePath: tempFilePath,
+              name: 'uploadfile',
+              success: function (res) {
+                var jsonData = JSON.parse(res.data);
+                that.setData({
+                  saveImageId: jsonData.ResultContent
+                })
+              }
+            })
             that.setData({
-              newImageUrl: tempFilePath,
-              storageKey: rnd
+              newImageUrl: tempFilePath
             });
           },
           fail: function (res) {
@@ -219,7 +227,7 @@ Page({
     let that = this;
     return {
       title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
-      path: '/pages/poster/poster?id=' + that.data.storageKey,
+      path: '/pages/poster/poster?id=' + parseInt(that.data.saveImageId),
       success: function (res) {
 
       },

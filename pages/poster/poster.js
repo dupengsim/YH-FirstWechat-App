@@ -1,4 +1,5 @@
 import { onCreationTab } from '../../common_Js/common.js'
+import { BASE_URL } from '../../common_Js/constant.js'
 
 Page({
 
@@ -14,14 +15,18 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    var _key = options.id;
-    wx.getStorage({
-      key: "" + _key + "",
+    var _id = parseInt(options.id);
+    wx.request({
+      url: BASE_URL + '/course/getimage/' + _id,
+      header: {
+        'Content-Type': 'application/json'
+      },
+      method: "GET",
       success: function (res) {
         that.setData({
-          imgUrl: res.data[0].url
+          imgUrl: BASE_URL + res.data.Url
         })
-      },
+      }
     })
   },
   buildme: function () { //创建我的海报
