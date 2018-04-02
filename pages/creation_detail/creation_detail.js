@@ -1,7 +1,11 @@
 var creationList = require('../../mock/mock-data.js');
+<<<<<<< HEAD
 import { firstOrDefault, buildRandom, getSystemInfo } from '../../common_Js/common.js'
 import { BASE_URL } from '../../common_Js/constant.js'
 
+=======
+import { firstOrDefault, buildRandom, getSystemInfo } from '../../common_Js/common.js';
+>>>>>>> 998cb0e45e293ea6308088d8219ca0528c40c36a
 var app = getApp();
 
 Page({
@@ -236,4 +240,5 @@ Page({
       }
     }
   }
+  
 })
