@@ -66,6 +66,7 @@ Page({
     } else {
       //生成海报
       let that = this;
+      var rnd = buildRandom(5);//随机生成唯一标识
       var wh = getSystemInfo();
       var _width = wh.clientWidth;
       var _height = wh.clientHeight;
@@ -97,29 +98,32 @@ Page({
           canvasId: 'myCanvas',
           success: function (res) {
             var tempFilePath = res.tempFilePath;
+            that.setData({
+              newImageUrl: tempFilePath
+            });
             // 保存图片到百度云服务器
             wx.uploadFile({
               url: BASE_URL + '/course/uploadfile',
               filePath: tempFilePath,
               name: 'uploadfile',
+              formData: {
+                'cno': rnd
+              },
               success: function (res) {
                 var jsonData = JSON.parse(res.data);
-                that.setData({
-                  saveImageId: jsonData.ResultContent
-                })
+                var newId = parseInt(jsonData.ResultContent);
+                console.log(newId);
               }
-            })
-            that.setData({
-              newImageUrl: tempFilePath
             });
           },
           fail: function (res) {
             console.log(res);
           }
         }, that)
-      }, 1000)
+      }, 1000);
       that.setData({
-        isshow: 0
+        isshow: 0,
+        saveImageId: rnd
       });
     }
   },
@@ -159,7 +163,7 @@ Page({
     that.setData({
       clientWidth: _width,
       clientHeight: _height
-    })
+    });
     var context = wx.createCanvasContext('tempCanvas');
     context.stroke();
     context.setFillStyle('white');
@@ -218,22 +222,36 @@ Page({
       fail: function (res) {
         wx.showToast({
           title: '保存到相册失败',
+          icon: ''
         })
       }
     })
   },
   onShareAppMessage: function (ops) {
     let that = this;
-    return {
-      title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
-      path: '/pages/poster/poster?id=' + parseInt(that.data.saveImageId),
-      success: function (res) {
+    if (ops.from == "menu") {//右上角的转发
+      return {
+        title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
+        path: '/pages/index/index?id=-1',
+        success: function (res) {
 
-      },
-      fail: function (res) {
+        },
+        fail: function (res) {
 
+        }
+      }
+    } else {
+      return {
+        title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
+        path: '/pages/poster/poster?id=' + parseInt(that.data.saveImageId),
+        success: function (res) {
+
+        },
+        fail: function (res) {
+
+        }
       }
     }
   }
-  
+
 })

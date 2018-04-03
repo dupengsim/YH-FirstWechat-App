@@ -15,9 +15,9 @@ Page({
    */
   onLoad: function (options) {
     let that = this;
-    var _id = parseInt(options.id);
+    var _id = options.id;
     wx.request({
-      url: BASE_URL + '/course/getimage/' + _id,
+      url: BASE_URL + '/course/getimage/' + parseInt(_id),
       header: {
         'Content-Type': 'application/json'
       },
