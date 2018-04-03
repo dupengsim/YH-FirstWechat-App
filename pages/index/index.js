@@ -71,16 +71,16 @@ Page({
   swiperChange: function (event) {
     let that = this;
     var _index = event.detail.current + 1;
-    var currentImage = that.data.imgUrls.firstOrDefault(event.detail.currentItemId);
     that.setData({
       index: _index,
-      currentId: currentImage.Id
+      currentId: event.detail.currentItemId
     });
   },
   saveImage: function () {
     let that = this;
     // 获取当前显示的图片
     var _imgUrl = BASE_URL + that.data.imgUrls.firstOrDefault(that.data.currentId).Url;
+    console.log(_imgUrl);
     var wh = getSystemInfo();
     var _width = wh.clientWidth;
     var _height = wh.clientHeight + 60;
@@ -126,7 +126,6 @@ Page({
         }, 1000);
       }
     });
-
     wx.showLoading({
       title: '正在保存中...',
     })
