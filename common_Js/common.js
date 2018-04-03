@@ -19,7 +19,7 @@ var onArraySort = function (array) {
 var firstOrDefault = Array.prototype.firstOrDefault = function (id) {
   for (var i = 0; i < this.length; i++) {
     var item = this[i];
-    if (item.id == id) {
+    if (item.Id == id) {
       return item;
       break;
     }

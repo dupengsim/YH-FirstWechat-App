@@ -1,6 +1,7 @@
 var imglist = require('../../mock/mock-data.js');
 import { onCreationTab, onArraySort, firstOrDefault, getSystemInfo } from '../../common_Js/common.js';
-
+import { BASE_URL } from '../../common_Js/constant.js'
+var app = getApp();
 
 Page({
 
@@ -36,33 +37,36 @@ Page({
   },
   onLoad: function (options) {
     let that = this;
-    var sharedlist = [];//被分享的那张海报信息
-    var leftlist = [];//剩余的海报列表
-    var postId = options.id;
-    // 来自右上角的转发操作
-    if (postId == -1 || postId == undefined || postId == '' || postId.length <= 0) {
-      that.setData({
-        imgUrls: onArraySort(imglist.imageList)
-      })
-    } else {
-      var tempList = imglist.imageList;
-      for (var i = 0; i < tempList.length; i++) {
-        var item = tempList[i];
-        if (item.id == postId) {
-          sharedlist = [{ "id": postId, "url": item.url }];
-        } else {
-          leftlist.push(item);
+    var _url = BASE_URL + "/course/getimagelist/1";
+    app.http_get(_url, null).then((res) => {
+      var sharedlist = [];//被分享的那张海报信息
+      var leftlist = [];//剩余的海报列表
+      var postId = options.id;
+      // 没经过分享或是来自右上角的转发操作
+      if (postId == -1 || postId == undefined
+        || postId == '' || postId.length <= 0) {
+        that.setData({
+          imgUrls: onArraySort(res.data)
+        })
+      } else {
+        for (var i = 0; i < res.data.length; i++) {
+          var item = res.data[i];
+          if (item.Id == postId) {
+            sharedlist = [{ "Id": postId, "Url": item.Url }];
+          } else {
+            leftlist.push(item);
+          }
         }
+        //被分享的海报与剩余的列表随机排序后合并，且保证已分享的在第一个显示
+        var result = sharedlist.concat(onArraySort(leftlist));
+        that.setData({
+          imgUrls: result
+        });
       }
-      //被分享的海报与剩余的列表随机排序后合并，且保证已分享的在第一个显示
-      var result = sharedlist.concat(onArraySort(leftlist));
+      //页面加载后，即保存当前第一个显示的海报id，否则直接保存时会有问题
       that.setData({
-        imgUrls: result
+        currentId: that.data.imgUrls[0].Id
       });
-    }
-    //页面加载后，即保存当前第一个显示的海报id，否则直接保存时会有问题
-    that.setData({
-      currentId: that.data.imgUrls[0].id
     });
   },
   swiperChange: function (event) {
@@ -71,13 +75,13 @@ Page({
     var currentImage = that.data.imgUrls[_index - 1];
     that.setData({
       index: _index,
-      currentId: currentImage.id
+      currentId: currentImage.Id
     });
   },
   saveImage: function () {
     let that = this;
     // 获取当前显示的图片
-    var _imgUrl = that.data.imgUrls.firstOrDefault(that.data.currentId).url;
+    var _imgUrl = BASE_URL + that.data.imgUrls.firstOrDefault(that.data.currentId).Url;
     var wh = getSystemInfo();
     var _width = wh.clientWidth;
     var _height = wh.clientHeight + 60;
@@ -128,6 +132,7 @@ Page({
   },
   savePhoto: function () {
     let that = this;
+    console.log(that.data.imgUrl);
     wx.saveImageToPhotosAlbum({
       filePath: that.data.imgUrl,
       success: function (res) {

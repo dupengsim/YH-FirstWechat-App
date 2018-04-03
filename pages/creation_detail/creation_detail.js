@@ -26,7 +26,7 @@ Page({
     if (postId != undefined && postId != '' && postId.length > 0) {
       var currentImage = creationList.creationList.firstOrDefault(postId);
       that.setData({
-        imgUrl: currentImage.url
+        imgUrl: currentImage.Url
       });
     } else {
       that.setData({
@@ -76,7 +76,6 @@ Page({
         clientHeight: _height
       })
       var _imgUrl = that.data.imgUrl;
-
       var _content = that.data.content;
       var arr = _content.split(/[\n,]/g);
       var context = wx.createCanvasContext('myCanvas');
@@ -99,19 +98,6 @@ Page({
           canvasId: 'myCanvas',
           success: function (res) {
             var tempFilePath = res.tempFilePath;
-            // 保存图片到百度云服务器
-            wx.uploadFile({
-              url: BASE_URL + '/course/uploadfile',
-              filePath: tempFilePath,
-              name: 'uploadfile',
-              formData: {
-                'cno': rnd
-              },
-              success: function (res) {
-                var jsonData = JSON.parse(res.data);
-                var newId = parseInt(jsonData.ResultContent);
-              }
-            });
             that.setData({
               newImageUrl: tempFilePath
             });
@@ -120,7 +106,7 @@ Page({
             console.log(res);
           }
         }, that)
-      }, 1000);
+      }, 800);
       that.setData({
         isshow: 0,
         saveImageId: rnd
@@ -184,7 +170,6 @@ Page({
         canvasId: 'tempCanvas',
         success: function (res) {
           var tempFilePath = res.tempFilePath;
-          console.log(tempFilePath)
           that.setData({
             codeImageUrl: tempFilePath
           });
@@ -242,6 +227,20 @@ Page({
         }
       }
     } else {
+      // 保存图片到百度云服务器
+      wx.uploadFile({
+        url: BASE_URL + '/course/uploadfile',
+        filePath: that.data.newImageUrl,
+        name: 'uploadfile',
+        formData: {
+          'cno': that.data.saveImageId
+        },
+        success: function (res) {
+          var jsonData = JSON.parse(res.data);
+          var newId = parseInt(jsonData.ResultContent);
+          console.log(newId);
+        }
+      });
       return {
         title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
         path: '/pages/poster/poster?id=' + parseInt(that.data.saveImageId),

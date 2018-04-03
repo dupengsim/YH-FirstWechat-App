@@ -1,6 +1,6 @@
 <view class='container'>
-  <block wx:for="{{cardImgs}}" wx:key="{{item.id}}">
-    <image src='{{item.url}}' catchtap='onCreationTap' data-index="{{item.id}}"></image>
+  <block wx:for="{{cardImgs}}" wx:key="{{item.Id}}">
+    <image src='{{item.Url}}' catchtap='onCreationTap' data-index="{{item.Id}}"></image>
   </block>
   <text class='toLead_btn' catchtap='onImgUp'>从相册导入图片</text>
 </view>
