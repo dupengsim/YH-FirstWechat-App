@@ -1,4 +1,3 @@
-var creationList = require('../../mock/mock-data.js');
 import { firstOrDefault, buildRandom, getSystemInfo } from '../../common_Js/common.js'
 import { BASE_URL } from '../../common_Js/constant.js'
 
@@ -24,9 +23,11 @@ Page({
     let that = this;
     var postId = options.id;
     if (postId != undefined && postId != '' && postId.length > 0) {
-      var currentImage = creationList.creationList.firstOrDefault(postId);
-      that.setData({
-        imgUrl: currentImage.Url
+      var _url = BASE_URL + '/course/getsinglebgimage/' + postId;
+      app.http_get(_url, null).then((res) => {
+        that.setData({
+          imgUrl: 'https://www.cmmooc.com' + res.data.Url
+        });
       });
     } else {
       that.setData({
@@ -78,35 +79,40 @@ Page({
       var _imgUrl = that.data.imgUrl;
       var _content = that.data.content;
       var arr = _content.split(/[\n,]/g);
-      var context = wx.createCanvasContext('myCanvas');
-      context.stroke();
-      context.drawImage(_imgUrl, 0, 10, _width - 50, _height - 120);
-      //填充文字
-      context.setFillStyle('white');
-      context.font = "bold 14px Arial";
-      context.fillText('#在他人眼里，我竟然是这样的艺术生#', 20, 60);
-      var _top = 90;
-      for (var i = 0; i < arr.length; i++) {
-        that.drawText(arr[i], 20, _top, 260, context);
-        _top = _top + 35 * parseInt(that.data.counter);
-      }
-      //绘制图片
-      context.draw();
-      //输出最终图片的路径
-      setTimeout(() => {
-        wx.canvasToTempFilePath({
-          canvasId: 'myCanvas',
-          success: function (res) {
-            var tempFilePath = res.tempFilePath;
-            that.setData({
-              newImageUrl: tempFilePath
-            });
-          },
-          fail: function (res) {
-            console.log(res);
+      wx.downloadFile({
+        url: _imgUrl,
+        success: function (ress) {
+          var context = wx.createCanvasContext('myCanvas');
+          context.stroke();
+          context.drawImage(ress.tempFilePath, 0, 10, _width - 50, _height - 120);
+          //填充文字
+          context.setFillStyle('white');
+          context.font = "bold 14px Arial";
+          context.fillText('#在他人眼里，我竟然是这样的艺术生#', 20, 60);
+          var _top = 90;
+          for (var i = 0; i < arr.length; i++) {
+            that.drawText(arr[i], 20, _top, 260, context);
+            _top = _top + 35 * parseInt(that.data.counter);
           }
-        }, that)
-      }, 800);
+          //绘制图片
+          context.draw();
+          //输出最终图片的路径
+          setTimeout(() => {
+            wx.canvasToTempFilePath({
+              canvasId: 'myCanvas',
+              success: function (res) {
+                var tempFilePath = res.tempFilePath;
+                that.setData({
+                  newImageUrl: tempFilePath
+                });
+              },
+              fail: function (res) {
+                console.log(res);
+              }
+            }, that)
+          }, 1000);
+        }
+      });
       that.setData({
         isshow: 0,
         saveImageId: rnd

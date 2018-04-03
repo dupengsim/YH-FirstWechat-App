@@ -1,4 +1,4 @@
-var creationList = require('../../mock/mock-data.js');
+import { BASE_URL } from '../../common_Js/constant.js'
 var app = getApp();
 
 Page({
@@ -10,12 +10,17 @@ Page({
     cardImgs: []
   },
   onLoad: function () {
-    this.setData({
-      cardImgs: creationList.creationList
+    let that = this;
+    var _url = BASE_URL + '/course/getimagelist/2';
+    app.http_get(_url, null).then((res) => {
+      that.setData({
+        cardImgs: res.data
+      });
     });
   },
   onCreationTap: function (event) {
     var postId = event.currentTarget.dataset.index;
+    console.log(postId);
     wx.navigateTo({
       url: '/pages/creation_detail/creation_detail?id=' + postId,
     })
@@ -26,7 +31,7 @@ Page({
     wx.chooseImage({
       count: 1,
       sizeType: ['original', 'compressed'],
-      sourceType: ['album','camera'],
+      sourceType: ['album', 'camera'],
       success: function (res) {
         var tempFilePaths = res.tempFilePaths;
         app.globalData.chooseImgUrl = tempFilePaths;
