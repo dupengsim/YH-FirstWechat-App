@@ -39,7 +39,12 @@ Page({
     var sharedlist = [];//被分享的那张海报信息
     var leftlist = [];//剩余的海报列表
     var postId = options.id;
-    if (postId != undefined && postId != '' && postId.length > 0) {
+    // 来自右上角的转发操作
+    if (postId == -1 || postId == undefined || postId == '' || postId.length <= 0) {
+      that.setData({
+        imgUrls: onArraySort(imglist.imageList)
+      })
+    } else {
       var tempList = imglist.imageList;
       for (var i = 0; i < tempList.length; i++) {
         var item = tempList[i];
@@ -54,10 +59,6 @@ Page({
       that.setData({
         imgUrls: result
       });
-    } else {
-      that.setData({
-        imgUrls: onArraySort(imglist.imageList)
-      })
     }
     //页面加载后，即保存当前第一个显示的海报id，否则直接保存时会有问题
     that.setData({
@@ -151,11 +152,14 @@ Page({
     onCreationTab();
   },
   onShareAppMessage: function (ops) {//自定义分享信息
-    var _currentId = this.data.currentId;
     var that = this;
+    var _currentId = this.data.currentId;
     that.setData({
       mengShow: false
     });
+    if (ops.from == "menu") {
+      _currentId = -1;
+    }
     return {
       title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
       path: '/pages/index/index?id=' + _currentId,
