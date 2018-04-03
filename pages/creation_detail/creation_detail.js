@@ -99,9 +99,6 @@ Page({
           canvasId: 'myCanvas',
           success: function (res) {
             var tempFilePath = res.tempFilePath;
-            that.setData({
-              newImageUrl: tempFilePath
-            });
             // 保存图片到百度云服务器
             wx.uploadFile({
               url: BASE_URL + '/course/uploadfile',
@@ -113,8 +110,10 @@ Page({
               success: function (res) {
                 var jsonData = JSON.parse(res.data);
                 var newId = parseInt(jsonData.ResultContent);
-                console.log(newId);
               }
+            });
+            that.setData({
+              newImageUrl: tempFilePath
             });
           },
           fail: function (res) {
@@ -185,6 +184,7 @@ Page({
         canvasId: 'tempCanvas',
         success: function (res) {
           var tempFilePath = res.tempFilePath;
+          console.log(tempFilePath)
           that.setData({
             codeImageUrl: tempFilePath
           });
