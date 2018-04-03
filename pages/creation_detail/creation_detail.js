@@ -94,6 +94,7 @@ Page({
             that.drawText(arr[i], 20, _top, 260, context);
             _top = _top + 35 * parseInt(that.data.counter);
           }
+<<<<<<< HEAD
           //绘制图片
           context.draw();
           //输出最终图片的路径
@@ -113,6 +114,10 @@ Page({
           }, 1000);
         }
       });
+=======
+        }, that)
+      }, 1000);
+>>>>>>> aeacd7554d83dba1ac24a471ee2b48f59ec23aa6
       that.setData({
         isshow: 0,
         saveImageId: rnd
@@ -163,11 +168,11 @@ Page({
     context.drawImage(that.data.newImageUrl, 10, 15, _width - 20, _height - 150);
     // 绘制二维码
     var codeImg = '/images/code.jpg';
-    context.drawImage(codeImg, 145, _height - 120, 80, 80);
+    context.drawImage(codeImg, (_width-80)/2, _height - 120, 80, 80);
     // 填充文字
     context.setFillStyle('black');
     context.font = "normal 12px Arial";
-    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', 60, _height - 20);
+    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', (_width-250)/2, _height - 20);
     //绘制图片
     context.draw();
     //输出最终图片的路径
