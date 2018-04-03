@@ -26,7 +26,7 @@ Page({
       var _url = BASE_URL + '/course/getsinglebgimage/' + postId;
       app.http_get(_url, null).then((res) => {
         that.setData({
-          imgUrl: 'https://www.cmmooc.com' + res.data.Url
+          imgUrl: BASE_URL + res.data.Url
         });
       });
     } else {

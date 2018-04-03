@@ -1,4 +1,3 @@
-var imglist = require('../../mock/mock-data.js');
 import { onCreationTab, onArraySort, firstOrDefault, getSystemInfo } from '../../common_Js/common.js';
 import { BASE_URL } from '../../common_Js/constant.js'
 var app = getApp();
@@ -72,7 +71,7 @@ Page({
   swiperChange: function (event) {
     let that = this;
     var _index = event.detail.current + 1;
-    var currentImage = that.data.imgUrls[_index - 1];
+    var currentImage = that.data.imgUrls.firstOrDefault(event.detail.currentItemId);
     that.setData({
       index: _index,
       currentId: currentImage.Id
@@ -88,40 +87,46 @@ Page({
     that.setData({
       clientWidth: _width,
       clientHeight: _height
-    })
-    var context = wx.createCanvasContext('myCanvas');
-    context.stroke();
-    context.setFillStyle('white');
-    context.fillRect(0, 0, _width, _height);
-    context.drawImage(_imgUrl, 10, 15, _width - 20, _height - 150);
-    // 绘制二维码
-    var codeImg = '/images/code.jpg';
-    context.drawImage(codeImg, 150, _height - 120, 80, 80);
-    // 填充文字
-    context.setFillStyle('black');
-    context.font = "normal 12px Arial";
-    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', 60, _height - 20);
-    //绘制图片
-    context.draw();
-    //输出最终图片的路径
-    setTimeout(() => {
-      wx.canvasToTempFilePath({
-        canvasId: 'myCanvas',
-        success: function (res) {
-          var tempFilePath = res.tempFilePath;
-          that.setData({
-            imgUrl: tempFilePath
-          });
-        },
-        fail: function (res) {
-          that.setData({
-            mengShow: false,
-            aniStyle: false,
-            isShow: true
-          });
-        }
-      }, that)
-    }, 1000);
+    });
+    wx.downloadFile({
+      url: _imgUrl,
+      success: function (ress) {
+        var context = wx.createCanvasContext('myCanvas');
+        context.stroke();
+        context.setFillStyle('white');
+        context.fillRect(0, 0, _width, _height);
+        context.drawImage(ress.tempFilePath, 10, 15, _width - 20, _height - 150);
+        // 绘制二维码
+        var codeImg = '/images/code.jpg';
+        context.drawImage(codeImg, (_width - 80) / 2, _height - 120, 80, 80);
+        // 填充文字
+        context.setFillStyle('black');
+        context.font = "normal 12px Arial";
+        context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', (_width - 250) / 2, _height - 20);
+        //绘制图片
+        context.draw();
+        //输出最终图片的路径
+        setTimeout(() => {
+          wx.canvasToTempFilePath({
+            canvasId: 'myCanvas',
+            success: function (res) {
+              var tempFilePath = res.tempFilePath;
+              that.setData({
+                imgUrl: tempFilePath
+              });
+            },
+            fail: function (res) {
+              that.setData({
+                mengShow: false,
+                aniStyle: false,
+                isShow: true
+              });
+            }
+          }, that)
+        }, 1000);
+      }
+    });
+
     wx.showLoading({
       title: '正在保存中...',
     })
@@ -132,7 +137,6 @@ Page({
   },
   savePhoto: function () {
     let that = this;
-    console.log(that.data.imgUrl);
     wx.saveImageToPhotosAlbum({
       filePath: that.data.imgUrl,
       success: function (res) {

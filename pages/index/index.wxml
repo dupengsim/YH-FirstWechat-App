@@ -18,7 +18,7 @@
     <view class='containerImg'>
       <swiper bindchange='swiperChange' circular="true">
         <block wx:for="{{imgUrls}}" wx:key="item.Id">
-          <swiper-item style="position:relative;">
+          <swiper-item style="position:relative;" item-id='{{item.Id}}'>
             <image src="https://www.cmmooc.com{{item.Url}}" class="slide-image" />
             <view class="iconCircle" catchtap='showMeng'>
               <text class='iconfont icon-fenxiang1 ifx'></text>
