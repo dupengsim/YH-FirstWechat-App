@@ -58,7 +58,9 @@ Page({
     })
   },
   createPoster: function (event) {
-    var len = this.data.content.length;
+    let that = this;
+    var len = that.data.content.length;
+    console.log(len)
     if (len === 0) {
       wx.showModal({
         title: '小提示',
@@ -67,7 +69,6 @@ Page({
       })
     } else {
       //生成海报
-      let that = this;
       var rnd = buildRandom(5);//随机生成唯一标识
       var wh = getSystemInfo();
       var _width = wh.clientWidth;
@@ -78,7 +79,9 @@ Page({
       })
       var _imgUrl = that.data.imgUrl;
       var _content = that.data.content;
+      console.log(_content);
       var arr = _content.split(/[\n,]/g);
+      console.log(arr[0]);
       wx.downloadFile({
         url: _imgUrl,
         success: function (ress) {
@@ -121,6 +124,18 @@ Page({
   },
   drawText: function (t, x, y, w, context) { // 设置文本自动换行
     let that = this;
+    wx.getSystemInfo({
+      success: function (res) {
+        if (res.platform === 'ios') {//针对iOS系统，过滤掉emoji
+          var ranges = [
+            '\ud83c[\udf00-\udfff]',
+            '\ud83d[\udc00-\ude4f]',
+            '\ud83d[\ude80-\udeff]'
+          ];
+          t = t.replace(new RegExp(ranges.join('|'), 'g'), '☒');
+        }
+      },
+    })
     var chr = t.split("");
     var temp = "";
     var row = [];
