@@ -60,7 +60,6 @@ Page({
   createPoster: function (event) {
     let that = this;
     var len = that.data.content.length;
-    console.log(len)
     if (len === 0) {
       wx.showModal({
         title: '小提示',
@@ -79,9 +78,7 @@ Page({
       })
       var _imgUrl = that.data.imgUrl;
       var _content = that.data.content;
-      console.log(_content);
       var arr = _content.split(/[\n,]/g);
-      console.log(arr[0]);
       wx.downloadFile({
         url: _imgUrl,
         success: function (ress) {
