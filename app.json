@@ -7,9 +7,9 @@
   ],
   "window":{
     "backgroundTextStyle":"light",
-    "navigationBarBackgroundColor": "#355A83",
+    "navigationBarBackgroundColor": "#fff",
     "navigationBarTitleText": "我有话想说",
-    "navigationBarTextStyle":"white"
+    "navigationBarTextStyle":"black"
   }
   
 }
