@@ -65,7 +65,7 @@ swiper image {
   position: absolute;
   top: 11rpx;
   left: 61rpx;
-  font-size: 30rpx;
+  font-size: 12px;
   color: gray;
 }
 
