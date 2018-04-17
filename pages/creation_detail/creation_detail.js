@@ -181,7 +181,7 @@ Page({
     context.fillRect(0, 0, _width, _height);
     context.drawImage(that.data.newImageUrl, 10, 15, _width - 20, _height - 150);
     // 绘制二维码
-    var codeImg = '/images/code_app.png';
+    var codeImg = '/images/code.jpg';
     context.drawImage(codeImg, (_width - 80) / 2, _height - 120, 80, 80);
     // 填充文字
     context.setFillStyle('black');
