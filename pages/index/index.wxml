@@ -3,8 +3,8 @@
 
 <view class='container'>
   <view class='conversation_Btn'>
-    <image src='/images/icon/converImg.png' style='width:282rpx;height:72rpx;'></image>
-    <view class='con_contacts'>
+    <image src='/images/icon/converImg.png' style='width:282rpx;height:72rpx;' catchtap='redirect'></image>
+    <!-- <view class='con_contacts'>
       <contact-button></contact-button>
       <contact-button></contact-button>
       <contact-button></contact-button>
@@ -12,7 +12,7 @@
       <contact-button></contact-button>
       <contact-button></contact-button>
       <contact-button></contact-button>
-    </view>
+    </view> -->
   </view>
   <view class='containerMain'>
     <view class='containerImg'>

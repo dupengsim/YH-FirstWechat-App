@@ -79,45 +79,52 @@ Page({
       var _imgUrl = that.data.imgUrl;
       var _content = that.data.content;
       var arr = _content.split(/[\n,]/g);
-      wx.downloadFile({
-        url: _imgUrl,
-        success: function (ress) {
-          var context = wx.createCanvasContext('myCanvas');
-          context.stroke();
-          context.drawImage(ress.tempFilePath, 0, 10, _width - 50, _height - 120);
-          //填充文字
-          context.setFillStyle('white');
-          context.font = "bold 14px Arial";
-          context.fillText('#在他人眼里，我竟然是这样的艺术生#', 20, 60);
-          var _top = 90;
-          for (var i = 0; i < arr.length; i++) {
-            that.drawText(arr[i], 20, _top, 260, context);
-            _top = _top + 35 * parseInt(that.data.counter);
+      if (_imgUrl.indexOf('https') > -1) {//选取服务器上的空白模板
+        wx.downloadFile({
+          url: _imgUrl,
+          success: function (ress) {
+            that.drawImage(that, ress.tempFilePath, arr, _width, _height);
           }
-          //绘制图片
-          context.draw();
-          //输出最终图片的路径
-          setTimeout(() => {
-            wx.canvasToTempFilePath({
-              canvasId: 'myCanvas',
-              success: function (res) {
-                var tempFilePath = res.tempFilePath;
-                that.setData({
-                  newImageUrl: tempFilePath
-                });
-              },
-              fail: function (res) {
-                console.log(res);
-              }
-            }, that)
-          }, 1000);
-        }
-      });
+        });
+      } else {//从相册中选取
+        that.drawImage(that, _imgUrl, arr, _width, _height);
+      }
       that.setData({
         isshow: 0,
         saveImageId: rnd
       });
     }
+  },
+  drawImage: function (that, imgUrl, arr, _width, _height) {
+    var context = wx.createCanvasContext('myCanvas');
+    context.stroke();
+    context.drawImage(imgUrl, 0, 10, _width - 50, _height - 120);
+    //填充文字
+    context.setFillStyle('white');
+    context.font = "bold 14px Arial";
+    context.fillText('#在他人眼里，我竟然是这样的艺术生#', 20, 60);
+    var _top = 90;
+    for (var i = 0; i < arr.length; i++) {
+      that.drawText(arr[i], 20, _top, 260, context);
+      _top = _top + 35 * parseInt(that.data.counter);
+    }
+    //绘制图片
+    context.draw();
+    //输出最终图片的路径
+    setTimeout(() => {
+      wx.canvasToTempFilePath({
+        canvasId: 'myCanvas',
+        success: function (res) {
+          var tempFilePath = res.tempFilePath;
+          that.setData({
+            newImageUrl: tempFilePath
+          });
+        },
+        fail: function (res) {
+          console.log(res);
+        }
+      }, that)
+    }, 800);
   },
   drawText: function (t, x, y, w, context) { // 设置文本自动换行
     let that = this;
@@ -174,7 +181,7 @@ Page({
     context.fillRect(0, 0, _width, _height);
     context.drawImage(that.data.newImageUrl, 10, 15, _width - 20, _height - 150);
     // 绘制二维码
-    var codeImg = '/images/code.jpg';
+    var codeImg = '/images/code_app.png';
     context.drawImage(codeImg, (_width - 80) / 2, _height - 120, 80, 80);
     // 填充文字
     context.setFillStyle('black');
@@ -196,17 +203,16 @@ Page({
           console.log(res);
         }
       }, that)
-    }, 1000);
+    }, 1200);
     wx.showLoading({
       title: '正在保存中...',
     })
     setTimeout(() => {
-      that.saveToAlbum();
+      that.saveToAlbum(that);
       wx.hideLoading();
-    }, 2000);
+    }, 2200);
   },
-  saveToAlbum: function () {
-    let that = this;
+  saveToAlbum: function (that) {
     wx.saveImageToPhotosAlbum({
       filePath: that.data.codeImageUrl,
       success: function (res) {

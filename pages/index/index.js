@@ -96,7 +96,7 @@ Page({
         context.fillRect(0, 0, _width, _height);
         context.drawImage(ress.tempFilePath, 10, 15, _width - 20, _height - 150);
         // 绘制二维码
-        var codeImg = '/images/code.jpg';
+        var codeImg = '/images/code_app.png';
         context.drawImage(codeImg, (_width - 80) / 2, _height - 120, 80, 80);
         // 填充文字
         context.setFillStyle('black');
@@ -122,7 +122,7 @@ Page({
               });
             }
           }, that)
-        }, 1000);
+        }, 1200);
       }
     });
     wx.showLoading({
@@ -131,7 +131,7 @@ Page({
     setTimeout(() => {
       that.savePhoto();
       wx.hideLoading();
-    }, 2000);
+    }, 2200);
   },
   savePhoto: function () {
     let that = this;
@@ -180,5 +180,10 @@ Page({
 
       }
     }
+  },
+  redirect:function(){
+    wx.redirectTo({
+      url: '/pages/logs/logs',
+    })
   }
 })

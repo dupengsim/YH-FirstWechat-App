@@ -3,7 +3,8 @@
     "pages/index/index",
     "pages/creation/creation",
     "pages/creation_detail/creation_detail",
-    "pages/poster/poster"
+    "pages/poster/poster",
+    "pages/logs/logs"
   ],
   "window":{
     "backgroundTextStyle":"light",
