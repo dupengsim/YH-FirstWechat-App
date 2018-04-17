@@ -12,7 +12,7 @@
   <view class='nav_container'>
     <button class='public nav_item'>
       <image class='public_img' src='/images/icon/conversation.jpg'></image>
-      <text class='nav_item_txt'>为专业正名</text>
+      <text class='nav_item_txt'>回复有干货</text>
     </button>
     <view class='creation nav_item' catchtap='onCreationTab'>
       <image class='createBtn_img' src='/images/icon/createBtn.jpg'></image>
