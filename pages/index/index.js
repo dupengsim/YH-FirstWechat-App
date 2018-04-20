@@ -180,10 +180,5 @@ Page({
 
       }
     }
-  },
-  // redirect:function(){
-  //   wx.redirectTo({
-  //     url: '/pages/logs/logs',
-  //   })
-  // }
+  }
 })
