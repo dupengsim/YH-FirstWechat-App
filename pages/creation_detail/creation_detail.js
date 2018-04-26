@@ -175,7 +175,7 @@ Page({
       clientWidth: _width,
       clientHeight: _height
     });
-    setTimeout(()=>{
+    setTimeout(() => {
       var context = wx.createCanvasContext('tempCanvas');
       context.stroke();
       context.setFillStyle('white');
@@ -190,7 +190,7 @@ Page({
       context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', (_width - 250) / 2, _height - 20);
       //绘制图片
       context.draw(true);
-    },500);
+    }, 500);
     //输出最终图片的路径
     setTimeout(() => {
       wx.canvasToTempFilePath({
@@ -241,6 +241,25 @@ Page({
       }
     })
   },
+  upload:function(){
+    let that = this;
+    wx.uploadFile({
+      url: BASE_URL + '/course/uploadfile',
+      filePath: that.data.newImageUrl,
+      name: 'uploadfile',
+      formData: {
+        'cno': that.data.saveImageId
+      },
+      success: function (res) {
+        var jsonData = JSON.parse(res.data);
+        var newId = parseInt(jsonData.ResultContent);
+        console.log(newId);
+      },
+      fail: function (res) {
+        that.upload();
+      }
+    });
+  },
   onShareAppMessage: function (ops) {
     let that = this;
     if (ops.from == "menu") {//右上角的转发
@@ -256,19 +275,7 @@ Page({
       }
     } else {
       // 保存图片到百度云服务器
-      wx.uploadFile({
-        url: BASE_URL + '/course/uploadfile',
-        filePath: that.data.newImageUrl,
-        name: 'uploadfile',
-        formData: {
-          'cno': that.data.saveImageId
-        },
-        success: function (res) {
-          var jsonData = JSON.parse(res.data);
-          var newId = parseInt(jsonData.ResultContent);
-          console.log(newId);
-        }
-      });
+      that.upload();
       return {
         title: '在他人眼里，我竟然是这样的艺术生（已哭晕）......',
         path: '/pages/poster/poster?id=' + parseInt(that.data.saveImageId),
