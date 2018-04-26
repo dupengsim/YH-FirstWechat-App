@@ -17,8 +17,8 @@
     <canvas canvas-id='tempCanvas' hidden='{{isHide}}' style='width:{{clientWidth}}px;height:{{clientHeight}}px;background-color:#fff;opacity:0;position:absolute;left:-{{clientWidth}}px;top:-{{clientHeight}}px'></canvas>
 
 
-  <view style='overflow:hidden;height:{{clientHeight}};z-index:999;'>
-    <canvas wx:if="{{isshow==0}}" canvas-id='myCanvas' class="canvas"></canvas>
+  <view style='overflow:hidden;height:{{clientHeight}}px;z-index:999;'>
+    <canvas wx:if="{{isshow==0}}" style="height:900rpx;" canvas-id='myCanvas' class="canvas"></canvas>
     <view wx:if="{{isshow==0}}" class="imgBtns">
       <button class='canvasBtn' catchtap='saveImage'>
         <image src='/images/icon/saveAlbum.png'></image>

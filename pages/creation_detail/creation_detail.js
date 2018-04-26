@@ -83,7 +83,7 @@ Page({
         wx.downloadFile({
           url: _imgUrl,
           success: function (ress) {
-            that.drawImage(that, ress.tempFilePath, arr, _width, _height);
+            that.drawImage(that, ress.tempFilePath, arr, _width - 50, _height - 120);
           }
         });
       } else {//从相册中选取
@@ -98,7 +98,7 @@ Page({
   drawImage: function (that, imgUrl, arr, _width, _height) {
     var context = wx.createCanvasContext('myCanvas');
     context.stroke();
-    context.drawImage(imgUrl, 0, 10, _width - 50, _height - 120);
+    context.drawImage(imgUrl, 0, 10, _width, _height);
     //填充文字
     context.setFillStyle('white');
     context.font = "bold 14px Arial";
@@ -109,9 +109,7 @@ Page({
       _top = _top + 35 * parseInt(that.data.counter);
     }
     //绘制图片
-    context.draw();
-    //输出最终图片的路径
-    setTimeout(() => {
+    context.draw(true, setTimeout(() => {
       wx.canvasToTempFilePath({
         canvasId: 'myCanvas',
         success: function (res) {
@@ -124,7 +122,9 @@ Page({
           console.log(res);
         }
       }, that)
-    }, 800);
+    }, 1000));
+    //输出最终图片的路径
+
   },
   drawText: function (t, x, y, w, context) { // 设置文本自动换行
     let that = this;
@@ -143,7 +143,7 @@ Page({
     var chr = t.split("");
     var temp = "";
     var row = [];
-    context.font = "bold 24px Arial";
+    context.font = "bold 26px Arial";
     context.fillStyle = "white";
     context.textBaseline = "middle";
     for (var a = 0; a < chr.length; a++) {
@@ -175,20 +175,22 @@ Page({
       clientWidth: _width,
       clientHeight: _height
     });
-    var context = wx.createCanvasContext('tempCanvas');
-    context.stroke();
-    context.setFillStyle('white');
-    context.fillRect(0, 0, _width, _height);
-    context.drawImage(that.data.newImageUrl, 10, 15, _width - 20, _height - 150);
-    // 绘制二维码
-    var codeImg = '/images/code.jpg';
-    context.drawImage(codeImg, (_width - 80) / 2, _height - 120, 80, 80);
-    // 填充文字
-    context.setFillStyle('black');
-    context.font = "normal 12px Arial";
-    context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', (_width - 250) / 2, _height - 20);
-    //绘制图片
-    context.draw();
+    setTimeout(()=>{
+      var context = wx.createCanvasContext('tempCanvas');
+      context.stroke();
+      context.setFillStyle('white');
+      context.fillRect(0, 0, _width, _height);
+      context.drawImage(that.data.newImageUrl, 10, 15, _width - 20, _height - 150);
+      // 绘制二维码
+      var codeImg = '/images/code.jpg';
+      context.drawImage(codeImg, (_width - 80) / 2, _height - 120, 80, 80);
+      // 填充文字
+      context.setFillStyle('black');
+      context.font = "normal 12px Arial";
+      context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', (_width - 250) / 2, _height - 20);
+      //绘制图片
+      context.draw(true);
+    },500);
     //输出最终图片的路径
     setTimeout(() => {
       wx.canvasToTempFilePath({
@@ -203,16 +205,17 @@ Page({
           console.log(res);
         }
       }, that)
-    }, 1200);
+    }, 1000);
     wx.showLoading({
       title: '正在保存中...',
     })
     setTimeout(() => {
-      that.saveToAlbum(that);
+      that.saveToAlbum();
       wx.hideLoading();
     }, 2200);
   },
-  saveToAlbum: function (that) {
+  saveToAlbum: function () {
+    let that = this;
     wx.saveImageToPhotosAlbum({
       filePath: that.data.codeImageUrl,
       success: function (res) {
@@ -229,11 +232,12 @@ Page({
           }
         })
       },
-      fail: function (res) {
-        wx.showToast({
-          title: '保存到相册失败',
-          icon: ''
-        })
+      fail: function (res) {//接口调用失败的回调函数
+        console.log(res);
+        that.saveToAlbum();
+      },
+      complete: function (res) {//接口调用结束的回调函数（调用成功、失败都会执行）
+        console.log(res);
       }
     })
   },

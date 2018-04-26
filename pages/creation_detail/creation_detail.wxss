@@ -71,7 +71,7 @@ button::after{
 .canvas {
   /* border: 1px solid #ccc; */
   width: 85%;
-  height: 900rpx;
+  /* height: 900rpx; */
   word-break: break-all;
   overflow: hidden;
   margin-left: 7.5%;

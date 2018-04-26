@@ -20,7 +20,6 @@ Page({
   },
   onCreationTap: function (event) {
     var postId = event.currentTarget.dataset.index;
-    console.log(postId);
     wx.navigateTo({
       url: '/pages/creation_detail/creation_detail?id=' + postId,
     })

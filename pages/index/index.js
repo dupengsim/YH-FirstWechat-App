@@ -103,7 +103,7 @@ Page({
         context.font = "normal 12px Arial";
         context.fillText('艺术类专业遇到过哪些误解呢？识别二维码查看', (_width - 250) / 2, _height - 20);
         //绘制图片
-        context.draw();
+        context.draw(true);
         //输出最终图片的路径
         setTimeout(() => {
           wx.canvasToTempFilePath({
@@ -122,7 +122,7 @@ Page({
               });
             }
           }, that)
-        }, 1200);
+        }, 800)
       }
     });
     wx.showLoading({
@@ -131,7 +131,7 @@ Page({
     setTimeout(() => {
       that.savePhoto();
       wx.hideLoading();
-    }, 2200);
+    }, 2000);
   },
   savePhoto: function () {
     let that = this;
@@ -152,6 +152,12 @@ Page({
             }
           }
         })
+      },
+      fail: function (res) {
+        that.savePhoto();
+      },
+      complete: function (res) {
+        console.log(res)
       }
     })
   },
